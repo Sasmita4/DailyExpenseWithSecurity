@@ -8,6 +8,7 @@ public class DailyExpenseTrackerController {
 	
 	@RequestMapping("/home")
 	public String homePage(){
+		
 	 return "index";
 	}
 
