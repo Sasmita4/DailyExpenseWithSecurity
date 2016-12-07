@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DailyExpenseTrackerController {
 	
 	@RequestMapping("/home")
-	public String homePage(){
-		
+	public String homePage(){		
 		
 	 return "index";
 	}
