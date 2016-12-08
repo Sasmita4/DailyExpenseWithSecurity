@@ -1,0 +1,83 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>DailyExpenceTracker</title>
+<meta name="description" content="">
+<meta name="google" value="notranslate">
+<meta name="viewport" content="width=device-width">
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<!-- build:css assets/styles/vendor.css -->
+<!-- Custom Styles -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/req-stylesheet.css">
+<link rel="stylesheet" href="css/circle.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+
+<script src="scripts/app/app.js"></script>
+
+<!-- <script src="scripts/main/main.js"></script> -->
+<!-- <script src="scripts/main/main.controller.js"></script> -->
+<link rel="stylesheet"    href="styles/footer.css">
+
+</head>
+<body ng-app="dailtExpenceApp">
+	<div class="container" style="margin-top: 60px;">
+		<div class="row header">
+			<div class="col-md-4">
+				<div class="logo">
+					<img src="images/logo.jpeg" alt="DailyExpense">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div ui-view="leftMenu">
+			      <div class="col-lg-3">
+                    <div class="login-panel">
+				      	<div class="username">Welcome <span style="color:orange;">**</span>
+				    </div>	
+                  <ul>
+		              <li><a>Food</a></li>
+		              <li><a>Transportation</a></li>
+		              <li><a>Miscellaneous</a></li>
+        		</ul>
+		        <div class="action-menu" >Reports Menu : </div>
+		         <ul>
+		           <li>weekely</li>          
+		           <li>Monthly</li>
+		           </ul>
+		       </div> 
+         </div>
+     </div>
+</div>
+<div ui-view="content">
+	<div class="col-lg-9">
+	    <div class="" >
+	        <div class="col-md-12 text-center" style="padding-top:100px;">
+	            <h1 translate="main.title" style="font-weight:bold; padding-top: 80px;">Welcome, DailyExpense</h1>
+	        </div>
+	    </div>
+    </div>
+</div>
+</div>
+<div class="row footer">
+	<div class="col-md-6 footermenu">
+		<ul  class="">
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Help</a></li>
+			<li><a href="#">Contact Us</a></li>
+		</ul>
+	</div>
+	<div class="col-md-6 text-right">
+		<p class="copyright">
+			<span translate="footer"></span>&nbsp;
+		</p>
+	</div>
+</div>
+</body>
+</html>

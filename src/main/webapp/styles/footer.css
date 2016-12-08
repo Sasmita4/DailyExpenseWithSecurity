@@ -1,0 +1,54 @@
+body{
+	height:100%;
+	width:100%;
+	overflow: hidden;
+}
+
+.footermenu ul {
+    list-style-type: none;
+    margin: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+    font-size: 14px;
+    color: blue;
+  
+}
+
+.footermenu li {
+    float: left;
+}
+
+.footermenu li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 4px 6px;
+    text-decoration: none;
+}
+
+.footermenu li a:hover {
+    color:#000;
+   
+}
+footer{
+	background: #6D97C4;color:white;
+	padding-bottom: 0%;
+	text-align: center;
+	margin-top: 20%;
+	height:40px;
+}
+header{
+background: cyan;color:black;
+ height: 60px;
+	
+}
+nav li {
+    display: inline;
+    border: solid;
+    border-width: 1px 1px 0 1px;
+    margin: 0 5px 0 0;
+}
+ul1 li{
+	margin-left: 20px;
+	
+}

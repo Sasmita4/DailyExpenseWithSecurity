@@ -20,87 +20,75 @@
 
 <script src="scripts/app/app.js"></script>
 
-<script src="scripts/main/main.js"></script>
-<script src="scripts/main/main.controller.js"></script>
-<style>
-.footermenu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-size: 14px;
-}
+<link rel="stylesheet"    href="styles/footer.css">
+<link rel="stylesheet" href="styles/login.css">
 
-.footermenu li {
-    float: left;
-}
-
-.footermenu li a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 4px 6px;
-    text-decoration: none;
-}
-
-.footermenu li a:hover {
-    color:#000;
-    text-decoration: underline;
-}
-</style>
 </head>
 <body ng-app="dailtExpenceApp">
-	<div class="container" style="margin-top: 60px;">
-		<div class="row header">
-			<div class="col-md-4">
-				<div class="logo">
-					<img src="images/logo.jpeg" alt="DailyExpense">
+
+	<div style="background:#6D97C4;">
+		<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-1">
+			<img src="images/logo.jpeg" alt="DailyExpense" height="95px">
+			</div>
+			<div class="col-md-8">
+            <h1>  Welcome To DailyExpense</h1>
+            </div>
+           
+		</div>
+		
+		</div>
+		<header>	
+		<ul class="ul1">
+			<lh><a href="#">About us</a></lh>
+			<lh><a href="#">Help</a></lh>
+			<lh><a href="#">Contact Us</a></lh>
+		</ul>
+</header>
+
+		<div  >
+		
+				<div class="account-container"
+				style="width: 500px; height: 200px;  left: 120px;">
+				<div class="content clearfix">
+
+					<div class="google-signin">
+						<div class="field">
+
+							<div style="display: none">
+								<form id="login-form" action="j_spring_security_check"
+									method="post">
+									<div class="center">
+										<input type="text" name="j_username" id="j_username"
+											maxlength="50" /> <input type="password" name="j_password"
+											id="j_password" maxlength="50" /> <input type="submit"
+											value="Login" id="login-submit" />
+									</div>
+								</form>
+							</div>
+							<div ng-app="directive.g+signin"
+								style="position: relative; top: -75px; left: 10px;">
+								<!-- localhost -->
+								<google-plus-signin clientid="982095460700-r2em1ubormovperomp1vlbm0r3m54rlt.apps.googleusercontent.com">
+								
+								<a id="signInG" class="btn btn-block btn-social btn-google">
+									<i class="fa fa-google-plus"></i> Sign in with google
+								</a> </google-plus-signin>
+							
+
+							</div>
+							<div id="profiles"></div>
+						</div>
+					</div>
 				</div>
 			</div>
+
 		</div>
-		<div class="row">
-			<div ui-view="leftMenu">
-			      <div class="col-lg-3">
-                    <div class="login-panel">
-				      	<div class="username">Welcome <span style="color:orange;">**</span>
-				    </div>	
-                  <ul>
-		              <li><a>Food</a></li>
-		              <li><a>Transportation</a></li>
-		              <li><a>Miscellaneous</a></li>
-        		</ul>
-		        <div class="action-menu" >Reports Menu : </div>
-		         <ul>
-		           <li>weekely</li>          
-		           <li>Monthly</li>
-		           </ul>
-		       </div> 
-         </div>
-     </div>
-</div>
-<div ui-view="content">
-	<div class="col-lg-9">
-	    <div class="" >
-	        <div class="col-md-12 text-center" style="padding-top:100px;">
-	            <h1 translate="main.title" style="font-weight:bold; padding-top: 80px;">Welcome, DailyExpense</h1>
-	        </div>
-	    </div>
-    </div>
-</div>
-</div>
-<div class="row footer">
-	<div class="col-md-6 footermenu">
-		<ul  class="">
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Help</a></li>
-			<li><a href="#">Contact Us</a></li>
-		</ul>
-	</div>
-	<div class="col-md-6 text-right">
-		<p class="copyright">
-			<span translate="footer"></span>&nbsp;
-		</p>
-	</div>
-</div>
+	
+		<br>
+
+<footer class="footerStyle">@copy rights reserved </footer>
+
 </body>
 </html>
