@@ -11,11 +11,9 @@ public class DailyExpenseTrackerController {
 	@RequestMapping("/home")
 	@ResponseBody
 	public ModelAndView homePage(){		
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("test");
-		
+		 ModelAndView mv=new ModelAndView();
+		 mv.setViewName("test");
 	 return mv;
 	}
-
 
 }

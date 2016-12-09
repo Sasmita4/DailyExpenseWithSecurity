@@ -1,4 +1,4 @@
-package com.daily.web;
+package com.daily.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-
 public class WebMVCAdapter extends WebMvcConfigurerAdapter {
 	
 	   @Bean

@@ -20,8 +20,8 @@ war {
 	baseName = 'DailyExpenseTracker'
 	version = '0.0.1-SNAPSHOT'
 }
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
@@ -29,5 +29,10 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile ('org.springframework.boot:spring-boot-starter-data-mongodb')
+	// https://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8
+    compile group: 'org.mapstruct', name: 'mapstruct-jdk8', version: '1.1.0.Final'
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	
 }
