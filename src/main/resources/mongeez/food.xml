@@ -1,0 +1,17 @@
+<mongoChangeLog>
+    <changeSet changeId="ChangeSet-9" author="reqrobo">
+        <script>
+           
+            db.food.insert(
+            {
+               
+                "date" : "07/05/1991",
+                "description" : "gift",
+                "category":"online",
+                "expense":"500"
+                
+            });
+            </script>
+            </changeSet>
+            </mongoChangeLog>
+           
