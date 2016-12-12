@@ -26,6 +26,9 @@ public class Miscellaneous implements Serializable{
 	
 	@NotNull
 	private String expense;
+	
+	@NotNull
+	private String email;
 
 	public String getDate() {
 		return date;
@@ -57,5 +60,13 @@ public class Miscellaneous implements Serializable{
 
 	public void setExpense(String expense) {
 		this.expense = expense;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
