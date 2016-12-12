@@ -229,4 +229,10 @@ span.login-checkbox>input[type='checkbox']:checked+label {
 	left: 23%;
 }
 
+#wrapper {
+	min-height: 100%;
+	position: relative;
+}
+
+
 }

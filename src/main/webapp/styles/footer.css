@@ -34,7 +34,7 @@ footer{
 	background: #6D97C4;color:white;
 	padding-bottom: 0%;
 	text-align: center;
-	margin-top: 20%;
+	margin-top: 2%;
 	height:40px;
 }
 header{
@@ -48,7 +48,8 @@ nav li {
     border-width: 1px 1px 0 1px;
     margin: 0 5px 0 0;
 }
-ul1 li{
+.ul1 li{
 	margin-left: 20px;
 	
 }
+
