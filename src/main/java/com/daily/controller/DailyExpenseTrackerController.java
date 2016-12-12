@@ -12,10 +12,9 @@ public class DailyExpenseTrackerController {
 	
 	@RequestMapping("/home")
 	@ResponseBody
-	public ModelAndView homePage(){		
-		 ModelAndView mv=new ModelAndView();
-		 mv.setViewName("test");
-	 return mv;
+	public ModelAndView loadMain(){
+		ModelAndView mv=new ModelAndView("redirect:/main.html");
+		return mv;
 	}
 	
 	@RequestMapping(value = {"/food" }, method = RequestMethod.GET)
@@ -32,4 +31,5 @@ public class DailyExpenseTrackerController {
 		return "transportation";
 	}
 
+	
 }

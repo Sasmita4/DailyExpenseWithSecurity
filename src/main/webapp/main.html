@@ -1,0 +1,109 @@
+<!doctype html>
+<html ng-app="dailyExpenceApp" ng-controller="mainCtrl">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<title>DailyExpenceTracker</title>
+<meta name="description" content=""></meta>
+<meta name="google" value="notranslate"></meta>
+<meta name="viewport" content="width=device-width"></meta>
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<!-- build:css assets/styles/vendor.css -->
+<!-- Custom Styles -->
+<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+<link rel="stylesheet" href="css/req-stylesheet.css"></link>
+<link rel="stylesheet" href="css/circle.css"></link>
+<link rel="stylesheet" href="css/font-awesome.min.css"></link>
+
+<link rel="stylesheet"    href="styles/footer.css"></link>
+<link rel="stylesheet" href="styles/login.css"></link>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
+<meta name="apple-mobile-web-app-capable" content="yes"></meta>
+
+<link href="lib/angular/css/angular-timezone-selector.css" rel="stylesheet"></link>
+<link href="lib/angular-material-design/css/angular-material.min.css" rel="stylesheet"></link>
+<link rel="stylesheet" href="lib/utility/css/select2.css"></link>
+<link rel="stylesheet" href="lib/utility/css/selectize.default.css"></link>
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+<link href="lib/angular/css/datetimepicker.css" rel="stylesheet"></link>
+<link rel="stylesheet" href="lib/angular/css/ng-grid.css" /></link>
+<link href="lib/utility/css/select.css" rel="stylesheet"></link>
+<link href="lib/angular/css/angular-block-ui.min.css" rel="stylesheet"></link>
+<link href="lib/angular-xeditable/css/xeditable.css" rel="stylesheet"></link>
+<link href="lib/angular/css/ng-notify.min.css"></link>
+<link href="lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"></link>
+<link rel="stylesheet" type="text/css" href="lib/angular/css/ng-tags-input.min.css"></link>
+
+<link href="lib/bootstrap/font/font-awesome.css" rel="stylesheet"></link>
+<link href="lib/bootstrap/font/google_font.css" rel="stylesheet"></link>
+
+<link href="lib/angular/css/animation.css" rel="stylesheet"></link>
+<link href="lib/angular-ui-grid/ui-grid.min.css" rel="stylesheet"></link>
+
+
+<script src="lib/utility/js/jquery-2.2.0.min.js"></script>
+<script src="lib/utility/js/lodash-4.16.4.min.js"></script>
+<script src="lib/utility/js/moment-2.11.1.min.js"></script>
+<script src="lib/utility/js/moment-timezone-with-data-0.5.0.min.js"></script>
+
+<script src="lib/angular/js/angular.min.js"></script>
+<script src="lib/angular/js/angular-animate.js"></script>
+<script src="lib/utility/js/jstz-1.0.6.min.js"></script>
+<script src="lib/angular/js/angular-timezone-selector.js"></script>
+
+<script src="lib/angular/js/angular-file-upload-shim.min.js"></script>
+<script src="lib/angular/js/angular-file-upload.js"></script>
+<script src="lib/angular/js/angular-ui-router.min.js"></script>
+<script src="lib/angular/js/angular-strap.js"></script>
+<script src="lib/angular/js/angular-strap.tpl.js"></script>
+<script src="lib/angular/js/angular-block-ui.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="lib/angular/js/datetimepicker.js"></script>
+<script src="lib/angular-xeditable/js/xeditable.min.js"></script>
+<script src="lib/angular-xeditable/js/xeditable.js"></script>
+<script src="lib/angular/js/ng-grid.debug.js"></script>
+
+<script src="lib/angular/js/angular-route.js"></script>
+<script src="lib/angular-material-design/js/angular-aria.min.js"></script>
+<script src="lib/angular-material-design/js/angular-material.min.js"></script>
+
+<script src="lib/angular/js/ng-notify.min.js"></script>
+
+<script src="lib/angular/js/highcharts-ng.js"></script>
+<script src="lib/angular/js/highcharts-ng.min.js"></script>
+<script src="lib/angular/js/highcharts.js"></script>
+
+<script src= "lib/utility/js/angular-fcsa-number.js"></script>
+<script src="lib/angular-ui-grid/ui-grid.min.js"></script>
+<script src="lib/utility/js/chosen.jquery-1.4.2.js"></script>
+<link rel="stylesheet"    href="styles/footer.css">
+<link rel="stylesheet" href="styles/login.css">
+<link rel="stylesheet" href="styles/sidebar.css">
+<link rel="stylesheet" href="styles/styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+
+</head>
+<body  >
+
+		<div id="wrapper">
+
+		<!------------------------------------------------------ keep header here ---------------------------------------------->
+		<div ng-include="'header.html'"></div>
+		<!------------------------------------------------------ --------------------------------------------------------------->
+								<center style="padding-top: 10%">
+									<div ui-view></div>
+								</center>
+		<!------------------------------------------------------ keep footer here ---------------------------------------------->
+		<div id="footer" ng-include="'footer.html'">footer</div>
+		<!----------------------------------------------------------------------- ---------------------------------------------->
+
+
+	</div>
+ <script type="text/javascript"  src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/js/mainController.js"></script>
+<script type="text/javascript" src="scripts/js/dashboard.js"></script>
+<script type="text/javascript" src="scripts/js/food/addFood.js"></script>
+
+
+</body>
+</html>
