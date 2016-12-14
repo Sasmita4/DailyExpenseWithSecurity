@@ -1,10 +1,10 @@
 <mongoChangeLog>
-    <changeSet changeId="ChangeSet-8" author="reqrobo">
+    <changeSet changeId="ChangeSet-4" author="dailyExpense">
         <script>
             db.transportation.insert(
             {
                
-                "date" : "07/05/1991",
+                "date" : "07/05/2016",
                 "description" : "Gachibowli to Ameerpet",
                 "category":"offline",
                 "expense":"160"

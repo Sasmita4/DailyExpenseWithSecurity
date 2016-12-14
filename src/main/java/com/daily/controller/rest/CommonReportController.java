@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.ws.rs.QueryParam;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,12 +43,12 @@ public class CommonReportController {
 	MiscellaneousService miscellaneousService;
 	
 	/*for Getting reports based on date and type*/
-    @RequestMapping(value = "/searchExpenses", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/searchExpenses", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @Transactional(readOnly = true)
-     public ResponseEntity<Object> expenseReport(@QueryParam("d1") String d1,@QueryParam("d2") String d2,@QueryParam("report") String report) throws URISyntaxException {
-    	//String report = searchDto.getExpenseType();
-    	Date startDate = DateConversionUtil.stringToDate(d1);
-    	Date endDate = DateConversionUtil.stringToDate(d2);
+     public ResponseEntity<Object> expenseReport(@Valid @RequestBody SearchDto searchDto) throws URISyntaxException {
+    	String report = searchDto.getExpenseType();
+    	Date startDate = DateConversionUtil.stringToDate(searchDto.getStartDate());
+    	Date endDate = DateConversionUtil.stringToDate(searchDto.getEndDate());
     	if(DailyExpenseConstants.FOOD_REPORT.equals(report)){
     		List<FoodDto> foodList = foodService.getFoodBetweenDate(startDate,endDate);
     	}

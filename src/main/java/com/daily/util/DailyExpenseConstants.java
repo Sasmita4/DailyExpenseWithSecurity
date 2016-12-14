@@ -6,8 +6,8 @@ public final class DailyExpenseConstants {
 	public static final String TRANSPORTATION_REPORT = "tranportation";
 	public static final String MISCELLANEOUS_REPORT = "miscellaneous";
 	
-	public static final String BY_ONLINE = "online";
-	public static final String BY_CASH = "cash";
+	public static final String BY_ONLINE = "Online";
+	public static final String BY_CASH = "By Cash";
 	
 
 }

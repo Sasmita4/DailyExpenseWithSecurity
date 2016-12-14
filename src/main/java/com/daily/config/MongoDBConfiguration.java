@@ -36,7 +36,7 @@ public class MongoDBConfiguration extends AbstractMongoConfiguration{
 	public Mongo mongo() throws Exception {
 		return mongo;
 	}
-/*	@Bean
+	@Bean
     public Mongeez mongeez() {
         Mongeez mongeez = new Mongeez();
         mongeez.setMongo(mongo);
@@ -45,5 +45,5 @@ public class MongoDBConfiguration extends AbstractMongoConfiguration{
 		mongeez.process();
         return mongeez;
     }
-*/
+
 }
