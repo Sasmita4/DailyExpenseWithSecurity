@@ -9,6 +9,13 @@ public class FoodDto implements Serializable{
 	 */
 	private static final long serialVersionUID = 8024959713221637222L;
 	private String date;
+	private String email;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	private String description;
 	private String category;
 	private String expense;

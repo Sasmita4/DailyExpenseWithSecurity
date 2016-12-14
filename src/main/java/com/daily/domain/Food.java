@@ -16,6 +16,9 @@ public class Food implements Serializable {
 	private static final long serialVersionUID = 2988172794450980046L;
 
 	@Id
+	private String id;
+	
+	@NotNull
 	private String date;
 	
 	@NotNull
@@ -29,6 +32,14 @@ public class Food implements Serializable {
 	
 	@NotNull
 	private String email;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getDate() {
 		return date;

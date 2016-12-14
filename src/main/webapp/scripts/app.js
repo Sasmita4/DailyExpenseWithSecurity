@@ -1,6 +1,7 @@
 
 
-var app = angular.module('dailyExpenceApp',  ['ngRoute','ui.router']);
+var app = angular.module('dailyExpenceApp',  ['ngGrid','ngRoute','ngMaterial','blockUI','angular-timezone-selector','ngAnimate', 'ui.router', 'ui.grid','ui.grid.pagination', 'xeditable','ui.bootstrap', 'ui.bootstrap.datetimepicker', 'ui.select']);
+//'ngGrid','ngRoute','angularFileUpload','ngMaterial','blockUI','angular-timezone-selector','ngAnimate', 'ui.utils.masks', 'ui.router', 'ui.grid','ui.grid.pagination', 'xeditable','ui.bootstrap', 'ui.bootstrap.datetimepicker', 'ui.select','ngSanitize','ngNotify','components','fcsa-number'
 
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {

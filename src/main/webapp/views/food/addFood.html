@@ -1,8 +1,7 @@
 <div style="width: 90%;">
-	<form name="position_form">
+	<form name="food_form" ng-controller="addFoodController">
 
-		<input type="text" name="jobcode" ng-hide="true"
-			ng-model="position.jobcode">
+	
 		<div class="panel panel-default">
 			<div class="panel-heading" style="height: 50px;" align="center">
 				<h4 style="color: white;">Add Food Expense</h4>
@@ -37,11 +36,13 @@
 							</label>
 						</div>
 						<div class="col-md-3">
-								<input type="text" name="jobHeader" id="jobHeader2"
-								ng-model="food.date" class="form-control" 
-								placeholder="Date"
-								style="width: 100%" required
-								data-errormessage-value-missing="Add some text">
+						<input type="text" class="form-control" ng-click="open($event)" ng-change="validateOffer();" 
+								datepicker-popup="{{format}}" ng-model="food.date"
+								is-open="opened" min-date="minDate" max-date="maxDate"
+								datepicker-options="dateOptions"
+								placeholder="Select Date"
+								date-disabled="disabled(date, mode)" ng-required="true"
+								close-text="Close" />
 						</div>
 
 					</div>
@@ -56,11 +57,12 @@
 							</label>
 						</div>
 						<div class="col-md-3">
-								<input type="text" name="ff" id="jobHefffader"
-								ng-model="food.category" class="form-control" 
-								placeholder="Add Category"
-								style="width: 100%" required
-								data-errormessage-value-missing="Add some text">
+									<select name="designation" placeholder="Select category"
+								required ng-model="food.category"
+								ng-options="o as o for o in categorys"
+								class="form-control input-sm" >
+								<option value='' disabled="disabled">Select Division</option>
+							</select>
 						</div>
 
 					</div>
@@ -88,7 +90,7 @@
 				<br>
 				<div align="center">
 					<button class="btn btn-info active" type="submit"
-						ng-disabled="position_form.$invalid" ng-click="submitFood()">
+						ng-disabled="food_form.$invalid" ng-click="submit()">
 						<span class="glyphicon glyphicon-ok-circle"></span> Save
 					</button>
 					<button class="btn btn-info active"
@@ -96,7 +98,29 @@
 						<span class="glyphicon glyphicon-remove"></span> Cancel
 					</button>
 				</div>
+				
 			</div>
+			
 		</div>
+		<br>
+		<div class="searchposition-container" style="border: none;">
+			<div class="row">
+					<div id="serachPos_grid" ui-grid="gridOptions" class="ui-grid-conf searchprof-grid" ui-grid-pagination>
+						<div class="no-rows" ng-if="!gridOptions.data.length">
+							<div class="msg">
+								<span>No Positions exists</span>
+							</div>
+						</div>
+						
+						<div>
+							<span class="grid-tot-rec">Total Records : {{gridOptions.totalItems}}</span>
+							<div class="text-center pull-right ui-gri-pager" ng-show="gridOptions.totalItems > numRows">
+								<pagination class="pagination-sm" total-items="gridOptions.totalItems" items-per-page="gridOptions.paginationPageSize" 
+						        	ng-model="gridOptions.paginationCurrentPage"></pagination>
+							</div>
+						</div>
+					</div>
+					</div>
+					</div>
 	</form>
 </div>

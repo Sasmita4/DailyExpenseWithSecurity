@@ -22,6 +22,8 @@ public class FoodController {
 	@RequestMapping(value = "/insertFood", method = RequestMethod.POST)
 	public @ResponseBody void addFoodExpense(@RequestBody FoodDto foodDto) {
 		try {
+			System.out.println("food=="+foodDto.getDescription());
+			foodDto.setEmail("rgangadhari@nisum.com");
 			foodService.saveFood(foodDto);
 	     } catch (Exception ex) {
 		

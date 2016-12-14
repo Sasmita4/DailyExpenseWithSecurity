@@ -22,10 +22,7 @@ public class FoodService {
 	
 	/* save food expense and return response entity*/
 	public FoodDto saveFood(FoodDto foodDto){
-		foodDto.setCategory("Online");
-		foodDto.setDescription("For Bday gift");
-		foodDto.setExpense("5000");
-		foodDto.setDate("07/05/1991");
+	
 		Food food = foodMapper.foodDtoToFood(foodDto);
 		food = foodDao.createFood(food);
 		FoodDto result = foodMapper.foodToFoodDto(food);
