@@ -1,6 +1,7 @@
 package com.daily.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
@@ -16,7 +17,10 @@ public class Miscellaneous implements Serializable{
 	private static final long serialVersionUID = -4398738839894550978L;
 
 	@Id
-	private String date;
+	private String id;
+	
+	@NotNull
+	private Date date;
 	
 	@NotNull
 	private String description;
@@ -29,12 +33,19 @@ public class Miscellaneous implements Serializable{
 	
 	@NotNull
 	private String email;
+	
+	public String getId() {
+		return id;
+	}
 
-	public String getDate() {
+	public void setId(String id) {
+		this.id = id;
+	}
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

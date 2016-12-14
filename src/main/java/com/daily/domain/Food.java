@@ -1,6 +1,7 @@
 package com.daily.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
@@ -19,7 +20,7 @@ public class Food implements Serializable {
 	private String id;
 	
 	@NotNull
-	private String date;
+	private Date date;
 	
 	@NotNull
 	private String description;
@@ -41,11 +42,11 @@ public class Food implements Serializable {
 		this.id = id;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

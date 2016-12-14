@@ -1,3 +1,5 @@
 <changeFiles>
     <file path="food.xml"/>
+    <file path="miscellaneous.xml"/>
+    <file path="transportation.xml"/>
 </changeFiles>

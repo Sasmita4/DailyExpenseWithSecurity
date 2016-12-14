@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.daily.domain.Food;
 import com.daily.dto.FoodDto;
+import com.daily.util.DateConversionUtil;
 
 @Component
 public class FoodMapper {
@@ -15,7 +16,7 @@ public class FoodMapper {
     		foodDto.setCategory(food.getCategory());
     		foodDto.setDescription(food.getDescription());
     		foodDto.setExpense(food.getExpense());
-    		foodDto.setDate(food.getDate());
+    		foodDto.setDate(DateConversionUtil.dateToString(food.getDate()));
     	    }
     	catch(Exception ex){
     	   }
@@ -29,7 +30,7 @@ public class FoodMapper {
     		food.setCategory(foodDto.getCategory());
     		food.setDescription(foodDto.getDescription());
     		food.setExpense(foodDto.getExpense());
-    		food.setDate(foodDto.getDate());
+    	    food.setDate(DateConversionUtil.stringToDate(foodDto.getDate()));
     	    }
     	catch(Exception e){
     	}

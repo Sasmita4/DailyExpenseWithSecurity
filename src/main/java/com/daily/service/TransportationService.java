@@ -1,6 +1,7 @@
 package com.daily.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,16 @@ public class TransportationService {
         }
     	return updatedTransportation;
     }
+    
+    public List<TransportationDto> getTransportationBetweenDate(Date startDate, Date endDate) {
+		List<Transportation> result = transportationDao.getTransportationBetweenDate(startDate,endDate);
+		List<TransportationDto> transportationList = new ArrayList<TransportationDto>();
+		for(Transportation transportation : result){
+			TransportationDto dto = transportationMapper.transportationToTransportationDto(transportation);
+			transportationList.add(dto);
+		}
+		return transportationList;
+	}
 	
 
 }

@@ -1,8 +1,11 @@
 package com.daily.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,7 @@ import com.daily.mapper.MiscellaneousMapper;
 
 @Service
 public class MiscellaneousService {
+	private final Logger log = LoggerFactory.getLogger(MiscellaneousService.class);
 	
 	@Autowired
 	MiscellaneousMapper miscellaneousMapper;
@@ -52,6 +56,13 @@ public class MiscellaneousService {
         }
     	return updatedFood;
     }
-	
-
+	public List<MiscellaneousDto> getMiscellaneousBetweenDate(Date startDate, Date endDate) {
+		List<Miscellaneous> result = miscellaneousDao.getMiscellaneousBetweenDate(startDate,endDate);
+		List<MiscellaneousDto> miscellaneousList = new ArrayList<MiscellaneousDto>();
+		for(Miscellaneous miscellaneous : result){
+			MiscellaneousDto dto = miscellaneousMapper.miscellaneousToMiscellaneousDto(miscellaneous);
+			miscellaneousList.add(dto);
+		}
+		return miscellaneousList;
+	}
 }

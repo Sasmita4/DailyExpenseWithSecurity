@@ -1,14 +1,14 @@
 <mongoChangeLog>
-    <changeSet changeId="ChangeSet-7" author="reqrobo">
+    <changeSet changeId="ChangeSet-9" author="reqrobo">
         <script>
            
-            db.food.insert(
+            db.miscellaneous.insert(
             {
                
                 "date" : "07/05/1991",
-                "description" : "gift",
-                "category":"online",
-                "expense":"500"
+                "description" : "panipuri",
+                "category":"offline",
+                "expense":"50"
                 
             });
             </script>

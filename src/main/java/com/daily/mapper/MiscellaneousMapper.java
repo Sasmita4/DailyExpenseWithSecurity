@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.daily.domain.Miscellaneous;
 import com.daily.dto.MiscellaneousDto;
+import com.daily.util.DateConversionUtil;
 
 @Component
 public class MiscellaneousMapper {
@@ -15,7 +16,7 @@ public class MiscellaneousMapper {
 	    			miscellaneousDto.setCategory(miscellaneous.getCategory());
 	    			miscellaneousDto.setDescription(miscellaneous.getDescription());
 	    			miscellaneousDto.setExpense(miscellaneous.getExpense());
-	    			miscellaneousDto.setDate(miscellaneous.getDate());
+	    			miscellaneousDto.setDate(DateConversionUtil.dateToString(miscellaneous.getDate()));
 	    	    }
 	    	catch(Exception ex){
 	    	   }
@@ -30,7 +31,7 @@ public class MiscellaneousMapper {
 	    			miscellaneous.setCategory(miscellaneousDto.getCategory());
 	    			miscellaneous.setDescription(miscellaneousDto.getDescription());
 	    			miscellaneous.setExpense(miscellaneousDto.getExpense());
-	    			miscellaneous.setDate(miscellaneousDto.getDate());
+	    			miscellaneous.setDate(DateConversionUtil.stringToDate(miscellaneousDto.getDate()));
 	    	    }
 	    	catch(Exception e){
 	    	}

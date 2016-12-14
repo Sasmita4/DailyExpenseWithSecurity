@@ -1,6 +1,7 @@
 package com.daily.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,14 @@ public class FoodService {
         }
     	return updatedFood;
     }
-	
+	public List<FoodDto> getFoodBetweenDate(Date startDate, Date endDate) {
+		List<Food> result = foodDao.getFoodBetweenDate(startDate,endDate);
+		List<FoodDto> foodList = new ArrayList<FoodDto>();
+		for(Food food : result){
+			FoodDto dto = foodMapper.foodToFoodDto(food);
+			foodList.add(dto);
+		}
+		return foodList;
+	}
 
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.daily.domain.Transportation;
 import com.daily.dto.TransportationDto;
+import com.daily.util.DateConversionUtil;
 
 @Component
 public class TransportationMapper {
@@ -15,7 +16,7 @@ public class TransportationMapper {
     			transportationDto.setCategory(transportation.getCategory());
     			transportationDto.setDescription(transportation.getDescription());
     			transportationDto.setExpense(transportation.getExpense());
-    			transportationDto.setDate(transportation.getDate());
+    			transportationDto.setDate(DateConversionUtil.dateToString(transportation.getDate()));
     	    }
     	catch(Exception ex){
     	   }
@@ -30,7 +31,7 @@ public class TransportationMapper {
     			transportation.setCategory(transportionDto.getCategory());
     			transportation.setDescription(transportionDto.getDescription());
     			transportation.setExpense(transportionDto.getExpense());
-    			transportation.setDate(transportionDto.getDate());
+    			transportation.setDate(DateConversionUtil.stringToDate(transportionDto.getDate()));
     	    }
     	catch(Exception e){
     	}
