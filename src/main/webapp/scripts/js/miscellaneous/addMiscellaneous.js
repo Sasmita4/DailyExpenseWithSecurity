@@ -1,7 +1,7 @@
 
 
-app.controller('addFoodController',['$scope','$http','$log','foodService','appConstants','uiGridConstants','sharedDataService','$location',
-									function($scope,$http,$log,foodService,appConstants,uiGridConstants,sharedDataService,$location) {
+app.controller('addMiscellaneousController',['$scope','$http','$log','miscellaneousService','appConstants','uiGridConstants','sharedDataService','$location',
+									function($scope,$http,$log,miscellaneousService,appConstants,uiGridConstants,sharedDataService,$location) {
 	$scope.food={};
 
 	$scope.numRows = 10;
@@ -55,7 +55,7 @@ app.controller('addFoodController',['$scope','$http','$log','foodService','appCo
 		  };
 	 $scope.submit=function(){
 	
-			foodService.addFoodExpense($scope.food).then(function(msg){
+			miscellaneousService.addFoodExpense($scope.food).then(function(msg){
 				
 					 $scope.sendSharedMessage(msg,'/addFood');
 				
@@ -102,7 +102,7 @@ app.controller('addFoodController',['$scope','$http','$log','foodService','appCo
 			
 	 $scope.loadFoodData = function() {
 		
-		 foodService.getFoodData().then(function(data){
+		 miscellaneousService.getFoodData().then(function(data){
 					$scope.position=data;
 					$scope.gridOptions.data = data;
 					$scope.gridOptions.totalItems = data.length;

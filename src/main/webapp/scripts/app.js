@@ -11,8 +11,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	    .state('main', { url: "/",templateUrl: "views/dashboard.html",controller: 'dashboardController'})
 	    .state('aboutus', { url: "/aboutus",templateUrl: "views/aboutus.html"})
 	       .state('main.addFood', {url:'/addFood',  templateUrl: 'views/food/addFood.html', controller: 'addFoodController'})
-	  
-	 $urlRouterProvider.otherwise('/');
+	  .state('main.addTransportation', {url:'/addTransportation',  templateUrl: 'views/transportation/addTransportation.html', controller: 'addTransportationController'})
+	  .state('main.addMiscellaneous', {url:'/addMiscellaneous',  templateUrl: 'views/miscellaneous/addMiscellaneous.html', controller: 'addMiscellaneousController'})
+	  $urlRouterProvider.otherwise('/');
 	
 }]);
 

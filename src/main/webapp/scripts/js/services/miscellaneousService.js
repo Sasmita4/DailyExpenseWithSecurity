@@ -1,21 +1,21 @@
 angular.module('dailyExpenceApp')
-		   .service('foodService',['$http','$filter','$rootScope','$q',	
-		                                 foodService]);
-function foodService($http,$filter,$rootScope,appConstants,$q) {
+		   .service('miscellaneousService',['$http','$filter','$rootScope','$q',	
+		                                 miscellaneousService]);
+function miscellaneousService($http,$filter,$rootScope,appConstants,$q) {
 	return {
 		addFoodExpense : addFoodExpense,
 		getFoodData:getFoodData
 	
 	};
 	function addFoodExpense(foodDto){
-		return $http.post('/insertFood', foodDto)
+		return $http.post('/insertMiscellaneous', foodDto)
 		.then('success')
 		.catch('error');
 	}
 	function getFoodData(){
 		
 	
-			return $http.get('/getAllFood')
+			return $http.get('/getAllMiscellaneous')
 			.then(getFoodSuccess)
 			.catch(getFoodError);
 	

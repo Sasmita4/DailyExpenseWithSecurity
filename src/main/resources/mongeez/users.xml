@@ -6,14 +6,14 @@
                 "userName" : "sasmita",
                 "email": "smaharana@nisum.com",
                 "createdDate": new Date(),
-                "authorities": [{"_id": "ROLE_ADMIN"}, {"_id": "ROLE_USER"}]
+                "authorities": ["ROLE_ADMIN", "ROLE_USER"]
             });
               db.users.insert(
             {
                 "userName" : "rajini",
                 "email": "rgangadhari@nisum.com",
                 "createdDate": new Date(),
-                "authorities": [{"_id": "ROLE_ADMIN"}, {"_id": "ROLE_USER"}]
+                "authorities": [ "ROLE_ADMIN", "ROLE_USER"]
             });
      </script>
   </changeSet>
