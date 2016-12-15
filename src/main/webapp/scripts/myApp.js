@@ -22,4 +22,4 @@
 //        
 //      });
   
-angular.module('myApp', ['ngRoute','ui.router']);
+var myApp=angular.module('myApp', ['ngRoute','ui.router']);

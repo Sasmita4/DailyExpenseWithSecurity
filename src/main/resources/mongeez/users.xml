@@ -6,6 +6,7 @@
                 "userName" : "sasmita",
                 "email": "smaharana@nisum.com",
                 "createdDate": new Date(),
+                "password":"nisum",
                 "authorities": ["ROLE_ADMIN", "ROLE_USER"]
             });
               db.users.insert(
@@ -13,6 +14,7 @@
                 "userName" : "rajini",
                 "email": "rgangadhari@nisum.com",
                 "createdDate": new Date(),
+                 "password":"nisum",
                 "authorities": [ "ROLE_ADMIN", "ROLE_USER"]
             });
      </script>

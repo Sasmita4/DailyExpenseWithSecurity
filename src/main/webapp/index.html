@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="myApp" >
+<html ng-app="myApp">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,40 +87,35 @@
 	<div ng-include="'header.html'"></div>
 
 	
-	<div class="account-container"
-				style="width: 500px; height: 200px;  left: 120px;">
+	<div class="account-container" ng-controller="myAppCtrl"
+				style="width: 500px; height: 200px;  left: 120px; padding :20px;">
 				
 
-					<div class="google-signin">
-						<div class="field">
-
-							<div style="display: none">
-								<form id="login-form" action="j_spring_security_check"
-									method="post">
-									<div class="center">
-										<input type="text" name="j_username" id="j_username"
-											maxlength="50" /> <input type="password" name="j_password"
-											id="j_password" maxlength="50" /> <input type="submit"
-											value="Login" id="login-submit" />
-									</div>
-								</form>
-							</div>
-							<div ng-app="directive.g+signin"
-								style="position: relative; top: -75px; left: 10px;">
-								<!-- localhost -->
-								<google-plus-signin clientid="982095460700-r2em1ubormovperomp1vlbm0r3m54rlt.apps.googleusercontent.com">
-								
-								<a id="signInG" class="btn btn-block btn-social btn-google">
-									<i class="fa fa-google-plus"></i> Sign in with google
-								</a> </google-plus-signin>
+					
 							
-
-							</div>
-							<div id="profiles"></div>
-						</div>
-						<div><input type="button" onclick="location.href='home';" value="Login" /></div>
-					</div>
-						
+				   <div class="form-group"  >
+            <label style="width:150px;" for="username">Username:</label>
+            <input type="text" name="username" id="username" style="width:200px;" ng-model="user.email" required />
+            
+       
+        </div>
+        <div class="form-group" >
+            <label style="width:150px;" for="password">Password</label>
+            <input type="password"  style="width:200px;" name="password" id="password" ng-model="user.password" required />
+           
+        </div>
+        <center>
+			<div class="form-actions">
+            <button type="submit" ng-click="submitLogin()" >Login</button>
+            
+           
+        </div>	
+        </center>	
+					
+					
+<!-- 						<div><input type="button" onclick="location.href='home';" value="Login" /></div> -->
+					
+					
 				
 			</div>
 		 		
@@ -129,6 +124,7 @@
 
 		<div ng-include="'footer.html'"></div>
 		<script type="text/javascript" src="scripts/myApp.js"></script>
+		<script type="text/javascript" src="scripts/myAppController.js"></script>
 
 </body>
 </html>
