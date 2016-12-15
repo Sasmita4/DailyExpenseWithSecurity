@@ -1,6 +1,5 @@
-/*package com.daily.service;
+package com.daily.service;
 
 public class UserService {
 
 }
-*/
