@@ -1,7 +1,7 @@
 
 
-app.controller('addFoodController',['$scope','$http','$log','$mdDialog','foodService','appConstants','uiGridConstants','sharedDataService','$location',
-									function($scope,$http,$log,$mdDialog,foodService,appConstants,uiGridConstants,sharedDataService,$location) {
+app.controller('addFoodController',['$scope','$http','$log','$mdDialog','foodService','appConstants','uiGridConstants','sharedDataService','$location','configService',
+									function($scope,$http,$log,$mdDialog,foodService,appConstants,uiGridConstants,sharedDataService,$location,configService) {
 	$scope.food={};
 
 	$scope.numRows = 10;
@@ -130,8 +130,9 @@ app.controller('addFoodController',['$scope','$http','$log','$mdDialog','foodSer
 			});
 	    }
 		$scope.editFood = function(cnt) {
+			configService.setId(cnt);
+			location.href='#/viewFood';
 			
-			location.href='#recruitment/viewPosition';
 		};
 		
 		$scope.gridOptions = {

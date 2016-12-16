@@ -41,8 +41,11 @@ public class FoodDao {
 		 mongoTemplate.remove(query, Food.class);
 		
 	}
-	public Food getOne(String id){
-		Food foodResult = foodRepository.findOne(id);
+	public Food getOne(Long id){
+		Query query = new Query();
+		
+		query.addCriteria(Criteria.where("cnt").is(id));
+		Food foodResult= mongoTemplate.findOne(query, Food.class);
 		return foodResult;
 	}
 	public List<Food> getFoodBetweenDate(Date startDate, Date endDate) {

@@ -4,8 +4,9 @@ angular.module('dailyExpenceApp')
 function foodService($http,$filter,$rootScope,appConstants,$q) {
 	return {
 		addFoodExpense : addFoodExpense,
-		getFoodData:getFoodData,
-		deleteFood:deleteFood
+		getFoodData : getFoodData,
+		deleteFood : deleteFood,
+		getDataByIds : getDataByIds
 	
 	};
 	function addFoodExpense(foodDto){
@@ -26,11 +27,15 @@ function foodService($http,$filter,$rootScope,appConstants,$q) {
 		
 			return $http.delete('deleteFood?id='+id)
 						.then('expense deleted')
-						.catch("food is not deleted")
+						.catch("food is not deleted");
 	
 	}
 	
-	
+	function getDataByIds(id){
+		return $http.get('getFoodById?id='+id)
+		.then(getFoodSuccess)
+		.catch(getFoodError);
+	}
 	
 	function getFoodSuccess(response){
 		return response.data;

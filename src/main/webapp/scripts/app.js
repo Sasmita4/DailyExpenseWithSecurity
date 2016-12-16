@@ -15,6 +15,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	       .state('main.addFood', {url:'/addFood',  templateUrl: 'views/food/addFood.html', controller: 'addFoodController'})
 	  .state('main.addTransportation', {url:'/addTransportation',  templateUrl: 'views/transportation/addTransportation.html', controller: 'addTransportationController'})
 	  .state('main.addMiscellaneous', {url:'/addMiscellaneous',  templateUrl: 'views/miscellaneous/addMiscellaneous.html', controller: 'addMiscellaneousController'})
+	    .state('viewFood', { url: "/viewFood",templateUrl: "views/food/viewFood.html",controller:'viewFoodController'})
 	  $urlRouterProvider.otherwise('/');
 	
 }]);

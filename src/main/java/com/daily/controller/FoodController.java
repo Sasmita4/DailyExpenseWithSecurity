@@ -32,7 +32,7 @@ public class FoodController {
 	  }
 		
 	@RequestMapping(value = "/updateFood", method = RequestMethod.PUT)
-	public @ResponseBody void updateFoodExpense(@RequestBody String id) {
+	public @ResponseBody void updateFoodExpense(@RequestBody Long id) {
 		try {
 			foodService.updateFood(id);
 		 } catch (Exception ex) {
@@ -57,5 +57,19 @@ public class FoodController {
 	  }
 		return foodList;
     }
+	
+	@RequestMapping(value = "/getFoodById", method = RequestMethod.GET)
+	public @ResponseBody FoodDto getFoodById(@RequestParam(value = "id", required = true) Long id) {
+		FoodDto foodDto = null;
+		try {
+			foodDto = foodService.getFoodById(id);
+			
+		 } catch (Exception ex) {
+			 ex.printStackTrace();
+	  }
+		return foodDto;
+    }
+	
+	
 
 }

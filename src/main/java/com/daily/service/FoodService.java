@@ -46,7 +46,7 @@ public class FoodService {
     	return foodDtoList;
     }
     /* update one record*/
-    public FoodDto updateFood(String id){
+    public FoodDto updateFood(Long id){
     	FoodDto updatedFood = null;
     	Food result = foodDao.getOne(id);
         if(result != null){
@@ -62,6 +62,12 @@ public class FoodService {
 			foodList.add(dto);
 		}
 		return foodList;
+	}
+	public FoodDto getFoodById(Long id){
+		Food result = foodDao.getOne(id);
+		
+		FoodDto foodDto=foodMapper.foodToFoodDto(result);
+		return foodDto;
 	}
 
 }
