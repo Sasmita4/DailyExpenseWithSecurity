@@ -1,7 +1,7 @@
 
 
-app.controller('addFoodController',['$scope','$http','$log','foodService','appConstants','uiGridConstants','sharedDataService','$location',
-									function($scope,$http,$log,foodService,appConstants,uiGridConstants,sharedDataService,$location) {
+app.controller('addFoodController',['$scope','$http','$log','$mdDialog','foodService','appConstants','uiGridConstants','sharedDataService','$location',
+									function($scope,$http,$log,$mdDialog,foodService,appConstants,uiGridConstants,sharedDataService,$location) {
 	$scope.food={};
 
 	$scope.numRows = 10;
@@ -54,7 +54,7 @@ app.controller('addFoodController',['$scope','$http','$log','foodService','appCo
 		    $scope.currentPage = this.n;
 		  };
 	 $scope.submit=function(){
-	
+//		 $scope.food=$scope.food.date.toString();
 			foodService.addFoodExpense($scope.food).then(function(msg){
 				
 					 $scope.sendSharedMessage(msg,'/addFood');
@@ -103,7 +103,7 @@ app.controller('addFoodController',['$scope','$http','$log','foodService','appCo
 	 $scope.loadFoodData = function() {
 		
 		 foodService.getFoodData().then(function(data){
-					$scope.position=data;
+					$scope.foodData=data;
 					$scope.gridOptions.data = data;
 					$scope.gridOptions.totalItems = data.length;
 					$scope.gridOptions.paginationPageSize = $scope.numRows;
@@ -116,6 +116,24 @@ app.controller('addFoodController',['$scope','$http','$log','foodService','appCo
 		 
 		
 	  }
+		$scope.deleteFood = function(rowEntity) {
+			sharedDataService.showConformPopUp("Are you sure you want to delete?","Delete Food",$mdDialog).then(function(){
+				$scope.foodData.splice($scope.foodData.indexOf(rowEntity), 1);
+	        	foodService.deleteFood(rowEntity.cnt).then(function(msg){
+		        	$scope.message = rowEntity.expense+ " " + msg;
+		        	$scope.cls = appConstants.SUCCESS_CLASS;
+		        	$timeout(function() { $scope.alHide();},3000);
+	    		}).catch(function(deleteMessage){
+	    			sendSharedMessage(msg, appConstants.ERROR_CLASS);
+	                $timeout(function() { $scope.alHide(); }, 5000);
+	    		}); 
+			});
+	    }
+		$scope.editFood = function(cnt) {
+			
+			location.href='#recruitment/viewPosition';
+		};
+		
 		$scope.gridOptions = {
 			    enableSorting: true,
 			    enableColumnMenus: false,
@@ -124,10 +142,11 @@ app.controller('addFoodController',['$scope','$http','$log','foodService','appCo
 		        enableVerticalScrollbar   : uiGridConstants.scrollbars.NEVER,
 				paginationCurrentPage: 1,
 			    columnDefs: [
-			      { field: 'expense', displayName:"Expense", cellClass: 'ui-grid-align'},
+			      { field: 'expense', displayName:"Expense", cellClass: 'ui-grid-align',cellTemplate: '<div class="text-wrap"><a ng-click="grid.appScope.editFood(row.entity.cnt); $event.stopPropagation();">{{row.entity.expense}}<md-tooltip>{{row.entity.expense}}} </md-tooltip> </a></div>'},
 			      { field: 'date', displayName:"Date", cellClass: 'ui-grid-align'},
 			      { field: 'category', displayName:"category", width: 100, cellClass: 'ui-grid-align'},
-			      { field: 'description', displayName:"Description", width: 100, cellClass: 'ui-grid-align'}
+			      { field: 'description', displayName:"Description", width: 100, cellClass: 'ui-grid-align'},
+			      { field: 'delete', enableSorting: false, cellTemplate: '<a class="glyphicon glyphicon-remove" ng-click="grid.appScope.deleteFood(row.entity)"></a>' }
 			      
 			    ],
 			    onRegisterApi: function( gridApi ) {

@@ -31,7 +31,7 @@ public class FoodService {
 		
 	}
 	/*delete one record*/
-	public void deleteFood(String id){
+	public void deleteFood(Long id){
 		foodDao.delete(id);
 	}
 	

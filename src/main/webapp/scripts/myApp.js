@@ -23,3 +23,10 @@
 //      });
   
 var myApp=angular.module('myApp', ['ngRoute','ui.router']);
+//myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+//    
+//	
+//	  $stateProvider
+//	  
+//	    .state('aboutus', { url: "aboutus",templateUrl: "views/aboutus.html"})
+//} ]);

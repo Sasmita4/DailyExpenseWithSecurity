@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.daily.dto.FoodDto;
@@ -22,11 +23,11 @@ public class FoodController {
 	@RequestMapping(value = "/insertFood", method = RequestMethod.POST)
 	public @ResponseBody void addFoodExpense(@RequestBody FoodDto foodDto) {
 		try {
-			System.out.println("food=="+foodDto.getDescription());
+			
 			foodDto.setEmail("rgangadhari@nisum.com");
 			foodService.saveFood(foodDto);
 	     } catch (Exception ex) {
-		
+		ex.printStackTrace();
 		 }
 	  }
 		
@@ -39,7 +40,7 @@ public class FoodController {
     }
 	
 	@RequestMapping(value = "/deleteFood", method = RequestMethod.DELETE)
-	public @ResponseBody void deleteFoodExpense(@RequestBody String id) {
+	public @ResponseBody void deleteFoodExpense(@RequestParam(value = "id", required = true) Long id) {
 		try {
 			foodService.deleteFood(id);
 		 } catch (Exception ex) {
@@ -50,7 +51,9 @@ public class FoodController {
 		List<FoodDto> foodList = new ArrayList<FoodDto>();
 		try {
 			foodList = foodService.getAllFood();
+			
 		 } catch (Exception ex) {
+			 ex.printStackTrace();
 	  }
 		return foodList;
     }

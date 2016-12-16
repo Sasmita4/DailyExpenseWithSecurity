@@ -12,7 +12,7 @@ public class DateConversionUtil {
 	/* Date to String conversion*/
 	public static String dateToString(Date date){
 		String dateStirng = null;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 		try{
 			dateStirng = dateFormat.format(date);
 		}
@@ -25,9 +25,11 @@ public class DateConversionUtil {
 	/*String to Date Conversion*/
 	public static Date stringToDate(String date){
 		Date finalDate = null;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 		try {
+			if(!date.isEmpty()&&date!=null){
 			finalDate = dateFormat.parse(date);
+			}
 		} catch (Exception e) {
 			log.info("Problem in stringToDate" +e);
 		}

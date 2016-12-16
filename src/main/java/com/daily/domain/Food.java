@@ -18,6 +18,15 @@ public class Food implements Serializable {
 
 	@Id
 	private String id;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	private Long cnt;
 	
 	@NotNull
 	private Date date;
@@ -34,12 +43,12 @@ public class Food implements Serializable {
 	@NotNull
 	private String email;
 
-	public String getId() {
-		return id;
+	public Long getCnt() {
+		return cnt;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCnt(Long cnt) {
+		this.cnt = cnt;
 	}
 
 	public Date getDate() {

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.daily.domain.Food;
 import com.daily.repository.FoodRepository;
+import com.mongodb.DBCollection;
 
 @Repository
 public class FoodDao {
@@ -22,6 +23,10 @@ public class FoodDao {
 	MongoTemplate mongoTemplate;
 	
 	public Food createFood(Food food){
+		 final DBCollection col = mongoTemplate.getCollection("food");
+		  
+		    food.setCnt(col.count() + 1);
+		
 		Food foodResult = foodRepository.save(food);
 		return foodResult;
 	}
@@ -29,8 +34,12 @@ public class FoodDao {
 		List<Food> foodList = foodRepository.findAll();
 		return foodList;
 	}
-	public void delete(String id){
-		foodRepository.delete(id);
+	public void delete(Long id){
+//		foodRepository.delete(id);
+		Query query = new Query();
+		query.addCriteria(Criteria.where("cnt").is(id));
+		 mongoTemplate.remove(query, Food.class);
+		
 	}
 	public Food getOne(String id){
 		Food foodResult = foodRepository.findOne(id);

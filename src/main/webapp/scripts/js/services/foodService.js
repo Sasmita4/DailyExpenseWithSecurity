@@ -4,12 +4,13 @@ angular.module('dailyExpenceApp')
 function foodService($http,$filter,$rootScope,appConstants,$q) {
 	return {
 		addFoodExpense : addFoodExpense,
-		getFoodData:getFoodData
+		getFoodData:getFoodData,
+		deleteFood:deleteFood
 	
 	};
 	function addFoodExpense(foodDto){
 		return $http.post('/insertFood', foodDto)
-		.then('success')
+		.then(getFoodSuccess)
 		.catch('error');
 	}
 	function getFoodData(){
@@ -21,6 +22,16 @@ function foodService($http,$filter,$rootScope,appConstants,$q) {
 	
 		
 	}
+	function deleteFood(id){
+		
+			return $http.delete('deleteFood?id='+id)
+						.then('expense deleted')
+						.catch("food is not deleted")
+	
+	}
+	
+	
+	
 	function getFoodSuccess(response){
 		return response.data;
 	}
