@@ -19,7 +19,7 @@
 
 <link rel="stylesheet"    href="styles/footer.css">
 <link rel="stylesheet" href="styles/login.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 <link href="lib/angular/css/angular-timezone-selector.css" rel="stylesheet">
@@ -78,50 +78,40 @@
 <script src= "lib/utility/js/angular-fcsa-number.js"></script>
 <script src="lib/angular-ui-grid/ui-grid.min.js"></script>
 <script src="lib/utility/js/chosen.jquery-1.4.2.js"></script>
-<link rel="stylesheet"    href="styles/footer.css">
+<link rel="stylesheet" href="styles/footer.css">
 <link rel="stylesheet" href="styles/login.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
 
 </head>
 <body>
 	<div ng-include="'header.html'"></div>
-
-	
-	<div class="account-container" ng-controller="myAppCtrl"
-				style="width: 500px; height: 200px;  left: 120px; padding :20px;">
-				
-
-					
-							
-				   <div class="form-group"  >
-            <label style="width:150px;" for="username">Username:</label>
-            <input type="text" name="username" id="username" style="width:200px;" ng-model="user.email" required />
-            
-       
-        </div>
-        <div class="form-group" >
-            <label style="width:150px;" for="password">Password</label>
-            <input type="password"  style="width:200px;" name="password" id="password" ng-model="user.password" required />
-           
-        </div>
-        <center>
-			<div class="form-actions">
-            <button type="submit" ng-click="submitLogin()" >Login</button>
-            
-           
-        </div>	
-        </center>	
-					
-					
-<!-- 						<div><input type="button" onclick="location.href='home';" value="Login" /></div> -->
-					
-					
-				
-			</div>
+	<div class="account-container" ng-controller="myAppCtrl" style="width: 500px; height: 200px;  left: 120px; padding :20px;">
+				<form id="login-form" action="login" method="post">
+					<!--  <c:if test="${param.error != null}">
+								<div class="alert alert-danger">
+									<p>Invalid username and password.</p>
+								</div>
+							</c:if>-->
+				   <div class="form-group">
+			            <label style="width:150px;" for="username">Username:</label>
+			            <input type="text" name="ssoId" id="username" style="width:200px;"/>
+        		  </div>
+		        <div class="form-group" >
+		            <label style="width:150px;" for="password">Password</label>
+		            <input type="password"  style="width:200px;" name="password" id="password"/>
+		            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		           
+		        </div>
+		        <center>
+					<div class="form-actions">
+		           <input type="submit" value="Login" id="login-submit" />
+		        </div>	
+		        </center>	
+        </form>
+    </div>
 		 		
 	<div style="height:35%;"></div>
 		<br>
-
 		<div ng-include="'footer.html'"></div>
 		<script type="text/javascript" src="scripts/myApp.js"></script>
 		<script type="text/javascript" src="scripts/myAppController.js"></script>

@@ -33,6 +33,8 @@ import com.daily.util.DateConversionUtil;
 public class CommonReportController {
 	private final Logger log =LoggerFactory.getLogger(CommonReportController.class);
 	
+	
+	
 	@Autowired
 	FoodService foodService;
 	
