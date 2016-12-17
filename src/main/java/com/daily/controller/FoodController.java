@@ -3,6 +3,8 @@ package com.daily.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,8 +25,6 @@ public class FoodController {
 	@RequestMapping(value = "/insertFood", method = RequestMethod.POST)
 	public @ResponseBody void addFoodExpense(@RequestBody FoodDto foodDto) {
 		try {
-			
-			foodDto.setEmail("rgangadhari@nisum.com");
 			foodService.saveFood(foodDto);
 	     } catch (Exception ex) {
 		ex.printStackTrace();
@@ -32,15 +32,15 @@ public class FoodController {
 	  }
 		
 	@RequestMapping(value = "/updateFood", method = RequestMethod.PUT)
-	public @ResponseBody void updateFoodExpense(@RequestBody Long id) {
-		try {
-			foodService.updateFood(id);
-		 } catch (Exception ex) {
-	  }
+	public @ResponseBody void updateFoodExpense(@Valid @RequestBody FoodDto foodDto) {
+		if(foodDto.getId() == null){
+		   addFoodExpense(foodDto);
+		}
+			foodService.saveFood(foodDto);
     }
 	
 	@RequestMapping(value = "/deleteFood", method = RequestMethod.DELETE)
-	public @ResponseBody void deleteFoodExpense(@RequestParam(value = "id", required = true) Long id) {
+	public @ResponseBody void deleteFoodExpense(@RequestParam(value = "id", required = true) String id) {
 		try {
 			foodService.deleteFood(id);
 		 } catch (Exception ex) {
@@ -59,17 +59,13 @@ public class FoodController {
     }
 	
 	@RequestMapping(value = "/getFoodById", method = RequestMethod.GET)
-	public @ResponseBody FoodDto getFoodById(@RequestParam(value = "id", required = true) Long id) {
+	public @ResponseBody FoodDto getFoodById(@RequestParam(value = "id", required = true) String id) {
 		FoodDto foodDto = null;
 		try {
 			foodDto = foodService.getFoodById(id);
-			
 		 } catch (Exception ex) {
 			 ex.printStackTrace();
 	  }
 		return foodDto;
     }
-	
-	
-
 }

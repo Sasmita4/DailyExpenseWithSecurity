@@ -16,7 +16,7 @@ public class FoodMapper {
     		foodDto.setCategory(food.getCategory());
     		foodDto.setDescription(food.getDescription());
     		foodDto.setExpense(food.getExpense());
-    		foodDto.setCnt(food.getCnt());
+    		foodDto.setId(food.getId());
     		foodDto.setDate(DateConversionUtil.dateToString(food.getDate()));
     	    }
     	catch(Exception ex){
@@ -31,7 +31,7 @@ public class FoodMapper {
     		food.setCategory(foodDto.getCategory());
     		food.setDescription(foodDto.getDescription());
     		food.setExpense(foodDto.getExpense());
-    		food.setCnt(foodDto.getCnt());
+    		food.setId(foodDto.getId());
     	    food.setDate(DateConversionUtil.stringToDate(foodDto.getDate()));
     	    }
     	catch(Exception e){

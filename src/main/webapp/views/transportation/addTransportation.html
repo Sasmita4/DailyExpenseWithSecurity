@@ -8,8 +8,7 @@
 			</div>
 			<div class="panel-body" align="left">
 				<br>
-
-							<div class="row">
+				<div class="row">
 					<div class="control-group">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
@@ -20,7 +19,7 @@
 						<div class="col-md-3">
 								<input type="text" name="jobHeader" id="jobHeader1"
 								ng-model="food.expense" class="form-control" 
-								placeholder="Name of Expense"
+								placeholder="Amount"
 								style="width: 100%" required
 								data-errormessage-value-missing="Add some text">
 						</div>
@@ -41,7 +40,6 @@
 								is-open="opened" min-date="minDate" max-date="maxDate"
 								datepicker-options="dateOptions"
 								placeholder="Select Date"
-								date-disabled="disabled(date, mode)" ng-required="true"
 								close-text="Close" />
 						</div>
 

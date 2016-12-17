@@ -23,7 +23,6 @@ public class FoodService {
 	
 	/* save food expense and return response entity*/
 	public FoodDto saveFood(FoodDto foodDto){
-	
 		Food food = foodMapper.foodDtoToFood(foodDto);
 		food = foodDao.createFood(food);
 		FoodDto result = foodMapper.foodToFoodDto(food);
@@ -31,7 +30,7 @@ public class FoodService {
 		
 	}
 	/*delete one record*/
-	public void deleteFood(Long id){
+	public void deleteFood(String id){
 		foodDao.delete(id);
 	}
 	
@@ -45,15 +44,6 @@ public class FoodService {
        }
     	return foodDtoList;
     }
-    /* update one record*/
-    public FoodDto updateFood(Long id){
-    	FoodDto updatedFood = null;
-    	Food result = foodDao.getOne(id);
-        if(result != null){
-        	updatedFood = saveFood(foodMapper.foodToFoodDto(result));
-        }
-    	return updatedFood;
-    }
 	public List<FoodDto> getFoodBetweenDate(Date startDate, Date endDate) {
 		List<Food> result = foodDao.getFoodBetweenDate(startDate,endDate);
 		List<FoodDto> foodList = new ArrayList<FoodDto>();
@@ -63,9 +53,8 @@ public class FoodService {
 		}
 		return foodList;
 	}
-	public FoodDto getFoodById(Long id){
+	public FoodDto getFoodById(String id){
 		Food result = foodDao.getOne(id);
-		
 		FoodDto foodDto=foodMapper.foodToFoodDto(result);
 		return foodDto;
 	}

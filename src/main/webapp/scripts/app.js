@@ -12,10 +12,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	    .state('aboutus', { url: "/aboutus",templateUrl: "views/aboutus.html"})
 	    .state('help', { url: "/help",templateUrl: "views/help.html"})
 	    .state('contact', { url: "/contact",templateUrl: "views/contact.html"})
-	       .state('main.addFood', {url:'/addFood',  templateUrl: 'views/food/addFood.html', controller: 'addFoodController'})
-	  .state('main.addTransportation', {url:'/addTransportation',  templateUrl: 'views/transportation/addTransportation.html', controller: 'addTransportationController'})
-	  .state('main.addMiscellaneous', {url:'/addMiscellaneous',  templateUrl: 'views/miscellaneous/addMiscellaneous.html', controller: 'addMiscellaneousController'})
-	    .state('viewFood', { url: "/viewFood",templateUrl: "views/food/viewFood.html",controller:'viewFoodController'})
+	    .state('main.addFood', {url:'/addFood',  templateUrl: 'views/food/addFood.html', controller: 'addFoodController'})
+	    .state('main.addTransportation', {url:'/addTransportation',  templateUrl: 'views/transportation/addTransportation.html', controller: 'addTransportationController'})
+	    .state('main.addMiscellaneous', {url:'/addMiscellaneous',  templateUrl: 'views/miscellaneous/addMiscellaneous.html', controller: 'addMiscellaneousController'})
+	    .state('viewFood', { url: '/viewFood',templateUrl: 'views/food/viewFood.html',controller:'viewFoodController'})
+	    .state('main.report', {url:'/searchReport',templateUrl: 'views/reports/report.html',controller:'reportController'})
 	  $urlRouterProvider.otherwise('/');
 	
 }]);

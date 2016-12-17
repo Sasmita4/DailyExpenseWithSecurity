@@ -1,7 +1,5 @@
-
-
-app.controller('addFoodController',['$scope','$http','$log','$mdDialog','foodService','appConstants','uiGridConstants','sharedDataService','$location','configService',
-									function($scope,$http,$log,$mdDialog,foodService,appConstants,uiGridConstants,sharedDataService,$location,configService) {
+app.controller('addFoodController',['$scope','$state','$http','$log','$mdDialog','foodService','appConstants','uiGridConstants','sharedDataService','$location','configService',
+									function($scope,$http,$state,$log,$mdDialog,foodService,appConstants,uiGridConstants,sharedDataService,$location,configService) {
 	$scope.food={};
 
 	$scope.numRows = 10;
@@ -56,16 +54,13 @@ app.controller('addFoodController',['$scope','$http','$log','$mdDialog','foodSer
 	 $scope.submit=function(){
 //		 $scope.food=$scope.food.date.toString();
 			foodService.addFoodExpense($scope.food).then(function(msg){
-				
 					 $scope.sendSharedMessage(msg,'/addFood');
-				
 	    	}).catch(function(msg){
 	    		$scope.message=msg;
 	    		$scope.cls=appConstants.ERROR_CLASS;
 				$log.error(msg);
 	    	})
-		
-	}
+	 }
 	 $scope.today = function() {
 		    $scope.dt = new Date();
 		  };
@@ -119,7 +114,7 @@ app.controller('addFoodController',['$scope','$http','$log','$mdDialog','foodSer
 		$scope.deleteFood = function(rowEntity) {
 			sharedDataService.showConformPopUp("Are you sure you want to delete?","Delete Food",$mdDialog).then(function(){
 				$scope.foodData.splice($scope.foodData.indexOf(rowEntity), 1);
-	        	foodService.deleteFood(rowEntity.cnt).then(function(msg){
+	        	foodService.deleteFood(rowEntity.id).then(function(msg){
 		        	$scope.message = rowEntity.expense+ " " + msg;
 		        	$scope.cls = appConstants.SUCCESS_CLASS;
 		        	$timeout(function() { $scope.alHide();},3000);
@@ -129,7 +124,9 @@ app.controller('addFoodController',['$scope','$http','$log','$mdDialog','foodSer
 	    		}); 
 			});
 	    }
+		
 		$scope.editFood = function(cnt) {
+			debugger;
 			configService.setId(cnt);
 			location.href='#/viewFood';
 			
@@ -143,7 +140,7 @@ app.controller('addFoodController',['$scope','$http','$log','$mdDialog','foodSer
 		        enableVerticalScrollbar   : uiGridConstants.scrollbars.NEVER,
 				paginationCurrentPage: 1,
 			    columnDefs: [
-			      { field: 'expense', displayName:"Expense", cellClass: 'ui-grid-align',cellTemplate: '<div class="text-wrap"><a ng-click="grid.appScope.editFood(row.entity.cnt); $event.stopPropagation();">{{row.entity.expense}}<md-tooltip>{{row.entity.expense}}} </md-tooltip> </a></div>'},
+			      { field: 'expense', displayName:"Expense", cellClass: 'ui-grid-align',cellTemplate: '<div class="text-wrap"><a ng-click="grid.appScope.editFood(row.entity.id); $event.stopPropagation();">{{row.entity.expense}}<md-tooltip>{{row.entity.expense}}} </md-tooltip> </a></div>'},
 			      { field: 'date', displayName:"Date", cellClass: 'ui-grid-align'},
 			      { field: 'category', displayName:"category", width: 100, cellClass: 'ui-grid-align'},
 			      { field: 'description', displayName:"Description", width: 100, cellClass: 'ui-grid-align'},

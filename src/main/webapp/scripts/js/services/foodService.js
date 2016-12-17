@@ -1,37 +1,41 @@
 angular.module('dailyExpenceApp')
-		   .service('foodService',['$http','$filter','$rootScope','$q',	
-		                                 foodService]);
-function foodService($http,$filter,$rootScope,appConstants,$q) {
+		   .service('foodService',['$http','$filter','$rootScope','$q',	foodService]);
+function foodService($http,$filter,$rootScope,$q) {
 	return {
 		addFoodExpense : addFoodExpense,
 		getFoodData : getFoodData,
 		deleteFood : deleteFood,
+		updateFoodExpense : updateFoodExpense,
 		getDataByIds : getDataByIds
 	
 	};
 	function addFoodExpense(foodDto){
+		debugger;
 		return $http.post('/insertFood', foodDto)
 		.then(getFoodSuccess)
 		.catch('error');
 	}
 	function getFoodData(){
-		
-	
-			return $http.get('/getAllFood')
-			.then(getFoodSuccess)
-			.catch(getFoodError);
-	
-		
+		debugger;
+		return $http.get('/getAllFood')
+		.then(getFoodSuccess)
+		.catch(getFoodError);
 	}
 	function deleteFood(id){
-		
+		debugger;
 			return $http.delete('deleteFood?id='+id)
 						.then('expense deleted')
 						.catch("food is not deleted");
 	
 	}
-	
+	function updateFoodExpense(foodDto){
+		debugger;
+		return $http.put('/updateFood', foodDto)
+		.then(getFoodSuccess)
+		.catch('error');
+	}
 	function getDataByIds(id){
+		debugger;
 		return $http.get('getFoodById?id='+id)
 		.then(getFoodSuccess)
 		.catch(getFoodError);
