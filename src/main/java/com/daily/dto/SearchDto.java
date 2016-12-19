@@ -8,20 +8,21 @@ public class SearchDto implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5462829235423403783L;
-	private String startDate;
-	private String endDate;
+	private String fromDate;
+	private String toDate;
 	private String expenseType;
-	public String getStartDate() {
-		return startDate;
+	
+	public String getFromDate() {
+		return fromDate;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
 	}
-	public String getEndDate() {
-		return endDate;
+	public String getToDate() {
+		return toDate;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
 	}
 	public String getExpenseType() {
 		return expenseType;

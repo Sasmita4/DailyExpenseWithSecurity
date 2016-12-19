@@ -8,20 +8,13 @@ public class FoodDto implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 8024959713221637222L;
-	//private Long cnt;
 	private String id;
 	private String date;
 	private String email;
 	private String description;
 	private String category;
 	private String expense;
-	/*public Long getCnt() {
-		return cnt;
-	}
-	public void setCnt(Long cnt) {
-		this.cnt = cnt;
-	}*/
-	
+
 	public String getDate() {
 		return date;
 	}

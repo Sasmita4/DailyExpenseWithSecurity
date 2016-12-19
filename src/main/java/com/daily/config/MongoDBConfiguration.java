@@ -45,5 +45,4 @@ public class MongoDBConfiguration extends AbstractMongoConfiguration{
 		mongeez.process();
         return mongeez;
     }
-
 }

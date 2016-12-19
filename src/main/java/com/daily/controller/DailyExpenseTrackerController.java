@@ -16,20 +16,4 @@ public class DailyExpenseTrackerController {
 		ModelAndView mv=new ModelAndView("redirect:/main.html");
 		return mv;
 	}
-	
-	@RequestMapping(value = {"/food" }, method = RequestMethod.GET)
-	public String foodPage(ModelMap model) {
-		return "food";
-	}
-
-	@RequestMapping(value = {"/miscellaneous" }, method = RequestMethod.GET)
-	public String miscellaneousPage(ModelMap model) {
-		return "miscellaneous";
-	}
-	@RequestMapping(value = {"/transportation" }, method = RequestMethod.GET)
-	public String transportationPage(ModelMap model) {
-		return "transportation";
-	}
-
-	
 }

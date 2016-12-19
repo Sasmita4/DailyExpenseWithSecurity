@@ -1,0 +1,67 @@
+<div style="width: 90%;">
+ <form name="food_form" ng-controller="reportController">
+  <div class="panel panel-default" style="overflow:scroll;height:500px;">
+	<div class="panel-heading" style="height: 50px;" align="center">
+		<h4 style="color: white;">Reports</h4>
+	</div>
+	<div class="panel-body" align="left">
+	 <br>
+	 <div class="row">
+		  <div class="control-group">
+			<div class="col-md-2"></div>
+			  <div class="col-md-2">
+				<label class="lbl" for="jobDescription"> <i
+					class="glyphicon icon-comment"></i>&nbsp;&nbsp;From Date<b class="mandatory">*</b>
+				</label>
+			  </div>
+		 	 <div class="col-md-3">
+				<input type="text" class="form-control" ng-click="open_fromDate($event)" datepicker-popup="{{format}}" ng-model="report.fromDate" is-open="opened1"
+				  min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" placeholder="Select Date" ng-required="true" close-text="Close" />
+		  	 </div>
+    		</div>
+		</div>
+		<div class="row">
+		  <div class="control-group">
+			<div class="col-md-2"></div>
+			  <div class="col-md-2">
+				<label class="lbl" for="jobDescription"> <i
+					class="glyphicon icon-comment"></i>&nbsp;&nbsp;To Date<b class="mandatory">*</b>
+				</label>
+			  </div>
+		 	 <div class="col-md-3">
+				<input type="text" class="form-control" ng-click="open_toDate($event)" datepicker-popup="{{format}}" ng-model="report.toDate" is-open="opened2"
+				  min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" placeholder="Select Date" ng-required="true" close-text="Close" />
+		  	 </div>
+    		</div>
+		</div>
+		
+		 <div class="row">
+		<div class="control-group">
+		  <div class="col-md-2"></div>
+			<div class="col-md-2">
+				<label class="lbl" for="jobDescription"> 
+				<i class="glyphicon icon-comment"></i>&nbsp;&nbsp;Report Type<b class="mandatory">*</b>
+				</label>
+			</div>
+			<div class="col-md-3">
+				<select placeholder="Select Report Type" required ng-model="report.expenseType" ng-options="o as o for o in reportTypes" class="form-control input-sm" >
+					<option value='' disabled="disabled">Select Report Type</option>
+				</select>
+			</div>
+		</div>
+	  </div>
+	
+  
+	<br>
+	 <div align="center">
+		<button class="btn btn-info active" type="submit" ng-disabled="food_form.$invalid" ng-click="reportSubmit()">
+			<span class="glyphicon glyphicon-ok-circle"></span> Search
+		</button>
+		<button class="btn btn-info active" ui-sref="recruitment.searchPosition">
+			<span class="glyphicon glyphicon-remove"></span>Cancel
+		</button>
+	 </div>
+ </div>
+</div>
+	</form>
+</div>
