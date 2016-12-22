@@ -1,4 +1,4 @@
-	   app.service('configService', function() {
+	   app.service('configServiceTrans', function() {
 		   var id;
 			return {
 		        setId: function(cnt) {

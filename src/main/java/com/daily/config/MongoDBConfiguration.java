@@ -2,14 +2,14 @@ package com.daily.config;
 
 import org.mongeez.Mongeez;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
-import org.springframework.boot.autoconfigure.mongo.MongoProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.mongodb.Mongo;
@@ -20,29 +20,39 @@ import com.mongodb.Mongo;
 public class MongoDBConfiguration extends AbstractMongoConfiguration{
 	
 	@Autowired
-	private Environment env; 
-	
-	@Autowired
 	private Mongo mongo;
-
-	@Autowired
-	private MongoProperties mongoProperties;
-	
-	protected String getDatabaseName() {
-		return mongoProperties.getDatabase();
-	}
 
 	@Override
 	public Mongo mongo() throws Exception {
 		return mongo;
 	}
-	@Bean
+
+    @Value("${spring.data.mongodb.host}")
+    private String mongoHost;
+
+    @Value("${spring.data.mongodb.port}")
+    private String mongoPort;
+
+    @Value("${spring.data.mongodb.database}")
+    private String mongoDB;
+
+    @Override
+    public MongoMappingContext mongoMappingContext()
+        throws ClassNotFoundException {
+        return super.mongoMappingContext();
+    }
+   
+    @Override
+    protected String getDatabaseName() {
+        return mongoDB;
+    }
+    @Bean
     public Mongeez mongeez() {
-        Mongeez mongeez = new Mongeez();
-        mongeez.setMongo(mongo);
-        mongeez.setFile(new ClassPathResource("/mongeez/master.xml"));
-        mongeez.setDbName(mongoProperties.getDatabase());
-		mongeez.process();
-        return mongeez;
+    	Mongeez mongeez = new Mongeez();
+    	mongeez.setMongo(mongo);
+    	mongeez.setFile(new ClassPathResource("/mongeez/master.xml"));
+    	mongeez.setDbName(mongoDB);
+    	mongeez.process();
+    	return mongeez;
     }
 }

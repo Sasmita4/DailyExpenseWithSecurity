@@ -10,23 +10,19 @@ function foodService($http,$filter,$rootScope,$q) {
 	
 	};
 	function addFoodExpense(foodDto){
-		debugger;
 		return $http.post('/insertFood', foodDto)
 		.then(getFoodSuccess)
 		.catch('error');
 	}
 	function getFoodData(){
-		debugger;
 		return $http.get('/getAllFood')
 		.then(getFoodSuccess)
 		.catch(getFoodError);
 	}
 	function deleteFood(id){
-		debugger;
 			return $http.delete('deleteFood?id='+id)
-						.then('expense deleted')
-						.catch("food is not deleted");
-	
+			.then('expense deleted')
+			.catch("food is not deleted");
 	}
 	function updateFoodExpense(foodDto){
 		debugger;

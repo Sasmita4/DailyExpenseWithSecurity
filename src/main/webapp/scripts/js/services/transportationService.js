@@ -3,28 +3,35 @@ angular.module('dailyExpenceApp')
 		                                 transportationService]);
 function transportationService($http,$filter,$rootScope,appConstants,$q) {
 	return {
-		addFoodExpense : addFoodExpense,
-		getFoodData:getFoodData
-	
+		addTransportationExpense : addTransportationExpense,
+		getTransportationData:getTransportationData,
+		updateTransportationExpense : updateTransportationExpense
 	};
-	function addFoodExpense(foodDto){
-		return $http.post('/insertTransportation', foodDto)
+	function addTransportationExpense(transportationDto){
+		return $http.post('http://localhost:8080/transportationUrl', transportationDto)
 		.then('success')
 		.catch('error');
 	}
-	function getFoodData(){
-		
-	
-			return $http.get('/getAllTransportation')
-			.then(getFoodSuccess)
-			.catch(getFoodError);
-	
-		
+	function getTransportationData(){
+			return $http.get('http://localhost:8080/transportationUrl')
+			.then(getTransportationSuccess)
+			.catch(getTransportationError);
 	}
-	function getFoodSuccess(response){
+	function deleteTransportation(id){
+		debugger;
+		return $http.delete('http://localhost:8080/transportationUrl?id='+id)
+		.then('expense deleted')
+		.catch("food is not deleted");
+    }
+	function updateTransportationExpense(transportationDto){
+		return $http.put('http://localhost:8080/transportationUrl', transportationDto)
+		.then(getTransportationSuccess)
+		.catch('error');
+    }
+	function getTransportationSuccess(response){
 		return response.data;
 	}
-	function getFoodError(response){
+	function getTransportationError(response){
 		return "Failed To Get FoodData! Response";
 	}
 }

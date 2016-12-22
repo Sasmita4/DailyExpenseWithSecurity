@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: development
+
+---
+spring:
+  profiles: development
+  cloud:
+    config:
+      name: DailyExpense
+      uri: http://localhost:8888
+      failFast: false

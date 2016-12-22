@@ -1,126 +1,105 @@
 <div style="width: 90%;">
-	<form name="transportation_form" ng-controller="addTransportationController">
-
-	
-		<div class="panel panel-default" style="overflow:scroll;height:500px;">
-			<div class="panel-heading" style="height: 50px;" align="center">
-				<h4 style="color: white;">Add Transportation Expense</h4>
-			</div>
-			<div class="panel-body" align="left">
-				<br>
-				<div class="row">
-					<div class="control-group">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label class="lbl" for="jobDescription"> <i
-								class="glyphicon icon-comment"></i>&nbsp;&nbsp;Expense<b class="mandatory">*</b>
-							</label>
-						</div>
-						<div class="col-md-3">
-								<input type="text" name="jobHeader" id="jobHeader1"
-								ng-model="food.expense" class="form-control" 
-								placeholder="Amount"
-								style="width: 100%" required
-								data-errormessage-value-missing="Add some text">
-						</div>
-
-					</div>
-					</div>
-					<div class="row">
-					<div class="control-group">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label class="lbl" for="jobDescription"> <i
-								class="glyphicon icon-comment"></i>&nbsp;&nbsp;Date<b class="mandatory">*</b>
-							</label>
-						</div>
-						<div class="col-md-3">
-						<input type="text" class="form-control" ng-click="open($event)" ng-change="validateOffer();" 
-								datepicker-popup="{{format}}" ng-model="food.date"
-								is-open="opened" min-date="minDate" max-date="maxDate"
-								datepicker-options="dateOptions"
-								placeholder="Select Date"
-								close-text="Close" />
-						</div>
-
-					</div>
+ <form name="transportation_form" ng-controller="addTransportationController">
+	<div class="panel panel-default" style="overflow:scroll;height:500px;">
+	  <div class="panel-heading" style="height: 50px;" align="center">
+		<h4 style="color: white;">Add Transportation Expense(SpringDataRest)</h4>
+	  </div>
+	  <div class="panel-body" align="left">
+		<br>
+		<div class="row">
+			<div class="control-group">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label class="lbl" for="jobDescription"> <i
+						class="glyphicon icon-comment"></i>&nbsp;&nbsp;Expense<b class="mandatory">*</b>
+					</label>
 				</div>
-			
-						<div class="row">
-					<div class="control-group">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label class="lbl" for="jobDescription"> <i
-								class="glyphicon icon-comment"></i>&nbsp;&nbsp;Category<b class="mandatory">*</b>
-							</label>
-						</div>
-						<div class="col-md-3">
-									<select name="designation" placeholder="Select category"
-								required ng-model="food.category"
-								ng-options="o as o for o in categorys"
-								class="form-control input-sm" >
-								<option value='' disabled="disabled">Select Division</option>
-							</select>
-						</div>
-
-					</div>
-					</div>
-					<div class="row">
-					<div class="control-group">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label class="lbl" for="jobDescription"> <i
-								class="glyphicon icon-comment"></i>&nbsp;&nbsp;Description<b class="mandatory">*</b>
-							</label>
-						</div>
-						<div class="col-md-3">
-								<textarea cols="50" rows="5" name="jobProfile" id="jobProfile4"
-								ng-model="food.description" class="form-control"
-								placeholder="Add Description"
-								style="height: 100px; width: 100%" required
-								data-errormessage-value-missing="Add some text"></textarea>
-						</div>
-
-					</div>
+				<div class="col-md-3">
+					<input type="text"  ng-model="transportation.expense" class="form-control" placeholder="Amount" style="width: 100%" required
+					 data-errormessage-value-missing="Add some text">
 				</div>
-				
-			
-				<br>
-				<div align="center">
-					<button class="btn btn-info active" type="submit"
-						ng-disabled="food_form.$invalid" ng-click="submit()">
-						<span class="glyphicon glyphicon-ok-circle"></span> Save
-					</button>
-					<button class="btn btn-info active"
-						ui-sref="recruitment.searchPosition">
-						<span class="glyphicon glyphicon-remove"></span> Cancel
-					</button>
-				</div>
-				
-			</div>
-			<br>
-			<br>
-			<div class="searchposition-container" style="border:none;">
-			<div class="row">
-					<div id="serachPos_grid" ui-grid="gridOptions" class="ui-grid-conf searchprof-grid" ui-grid-pagination>
-						<div class="no-rows" ng-if="!gridOptions.data.length">
-							<div class="msg">
-								<span>No Records exists</span>
-							</div>
-						</div>
-						
-						<div>
-							<span class="grid-tot-rec">Total Records : {{gridOptions.totalItems}}</span>
-							<div class="text-center pull-right ui-gri-pager" ng-show="gridOptions.totalItems > numRows">
-								<pagination class="pagination-sm" total-items="gridOptions.totalItems" items-per-page="gridOptions.paginationPageSize" 
-						        	ng-model="gridOptions.paginationCurrentPage"></pagination>
-							</div>
-						</div>
-					</div>
-					</div>
-					</div>
 		</div>
-		
-		
-	</form>
+	   </div>
+	 <div class="row">
+		<div class="control-group">
+			<div class="col-md-2"></div>
+			<div class="col-md-2">
+				<label class="lbl" for="jobDescription"> <i
+					class="glyphicon icon-comment"></i>&nbsp;&nbsp;Date<b class="mandatory">*</b>
+				</label>
+			</div>
+			<div class="col-md-3">
+			<input type="text" class="form-control" ng-click="open($event)" ng-change="validateOffer();" 
+					datepicker-popup="{{format}}" ng-model="transportation.date"
+					is-open="opened" min-date="minDate" max-date="maxDate"
+					datepicker-options="dateOptions"
+					placeholder="Select Date"
+					close-text="Close" />
+			</div>
+		</div>
+	 </div>
+			
+	<div class="row">
+		<div class="control-group">
+			<div class="col-md-2"></div>
+			<div class="col-md-2">
+				<label class="lbl" for="jobDescription"> <i
+					class="glyphicon icon-comment"></i>&nbsp;&nbsp;Category<b class="mandatory">*</b>
+				</label>
+			</div>
+			<div class="col-md-3">
+	            <select placeholder="Select category" required ng-model="transportation.category" ng-options="o as o for o in categorys"
+					class="form-control input-sm" >
+					<option value='' disabled="disabled">Select Category</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="control-group">
+			<div class="col-md-2"></div>
+			<div class="col-md-2">
+				<label class="lbl" for="jobDescription"> <i
+					class="glyphicon icon-comment"></i>&nbsp;&nbsp;Description<b class="mandatory">*</b>
+				</label>
+			</div>
+			<div class="col-md-3">
+			  <textarea cols="50" rows="5"ng-model="transportation.description" class="form-control" placeholder="Add Description"
+				style="height: 100px; width: 100%" required data-errormessage-value-missing="Add some text"></textarea>
+			</div>
+		</div>
+	</div>
+				
+	<br>
+	<div align="center">
+		<button class="btn btn-info active" type="submit" ng-disabled="food_form.$invalid" ng-click="submit()">
+			<span class="glyphicon glyphicon-ok-circle"></span> Save
+		</button>
+		<button class="btn btn-info active" ui-sref="recruitment.searchPosition">
+			<span class="glyphicon glyphicon-remove"></span> Cancel
+		</button>
+	</div>
+</div>
+<br>
+<br>
+<div class="searchposition-container" style="border:none;">
+	<div class="row">
+			<div id="serachPos_grid" ui-grid="gridOptions" class="ui-grid-conf searchprof-grid" ui-grid-pagination>
+				<div class="no-rows" ng-if="!gridOptions.data.length">
+					<div class="msg">
+						<span>No Records exists</span>
+					</div>
+				</div>
+				<div>
+					<span class="grid-tot-rec">Total Records : {{gridOptions.totalItems}}</span>
+					<div class="text-center pull-right ui-gri-pager" ng-show="gridOptions.totalItems > numRows">
+						<pagination class="pagination-sm" total-items="gridOptions.totalItems" items-per-page="gridOptions.paginationPageSize" 
+				        	ng-model="gridOptions.paginationCurrentPage"></pagination>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
 </div>

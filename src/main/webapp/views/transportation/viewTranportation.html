@@ -1,0 +1,83 @@
+<div style="width: 90%;">
+ <form name="transportationUpdate_form" ng-controller="viewTranportationController">
+  <div class="panel panel-default" style="overflow:scroll;height:500px;">
+	<div class="panel-heading" style="height: 50px;" align="center">
+		<h4 style="color: white;">Edit Transportation Details</h4>
+	</div>
+	<div class="panel-body" align="left">
+	 <br>
+		<div class="row">
+		   <div class="control-group">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label class="lbl" for="jobDescription"> <i
+						class="glyphicon icon-comment"></i>&nbsp;&nbsp;Expense<b class="mandatory">*</b>
+					</label>
+				</div>
+				<div class="col-md-3">
+					<input type="text" ng-model="transportation.expense" class="form-control" placeholder="Amount" style="width: 100%" 
+					 required data-errormessage-value-missing="Add some text">
+					 <input type="hidden" ng-model="food.id" class="form-control">
+				</div>
+			</div>
+	    </div>
+	    
+		<div class="row">
+		  <div class="control-group">
+			<div class="col-md-2"></div>
+			  <div class="col-md-2">
+				<label class="lbl" for="jobDescription"> <i
+					class="glyphicon icon-comment"></i>&nbsp;&nbsp;Date<b class="mandatory">*</b>
+				</label>
+			  </div>
+		 	 <div class="col-md-3">
+				<input type="text" class="form-control" ng-click="open($event)" datepicker-popup="{{format}}" ng-model="transportation.date" is-open="opened"
+				  min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" placeholder="Select Date" date-disabled="disabled(date, mode)" 
+				  ng-required="true" close-text="Close" />
+		  	 </div>
+    		</div>
+		</div>
+			
+	   <div class="row">
+		<div class="control-group">
+		  <div class="col-md-2"></div>
+			<div class="col-md-2">
+				<label class="lbl" for="jobDescription"> 
+				<i class="glyphicon icon-comment"></i>&nbsp;&nbsp;Category<b class="mandatory">*</b>
+				</label>
+			</div>
+			<div class="col-md-3">
+				<select placeholder="Select category" required ng-model="transportation.category" ng-options="o as o for o in categorys" class="form-control input-sm" >
+					  <option ng-repeat="i in categorys" value="{{i.category}}">{{i.category}}</option>
+				</select>
+			</div>
+		</div>
+	  </div>
+	  
+	<div class="row">
+	  <div class="control-group">
+		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<label class="lbl" for="jobDescription"> 
+			 <i class="glyphicon icon-comment"></i>&nbsp;&nbsp;Description<b class="mandatory">*</b>
+			</label>
+		</div>
+		<div class="col-md-3">
+			<textarea cols="50" rows="5" ng-model="transportation.description" class="form-control" placeholder="Expense Description"
+			 style="height: 100px; width: 100%" required data-errormessage-value-missing="Add some text"></textarea>
+		</div>
+	</div>
+  </div>
+  
+	<br>
+	 <div align="center">
+		<button class="btn btn-info active" type="submit" ng-disabled="transportationUpdate_form.$invalid" ng-click="updateSubmit()">
+			<span class="glyphicon glyphicon-ok-circle"></span> Save
+		</button>
+		<button class="btn btn-info active" ui-sref="recruitment.searchPosition">
+			<span class="glyphicon glyphicon-remove"></span> Cancel
+		</button>
+	 </div>
+ </div>
+	</form>
+</div>

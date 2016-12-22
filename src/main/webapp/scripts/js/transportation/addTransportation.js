@@ -1,8 +1,6 @@
-
-
-app.controller('addTransportationController',['$scope','$http','$log','transportationService','appConstants','uiGridConstants','sharedDataService','$location',
-									function($scope,$http,$log,transportationService,appConstants,uiGridConstants,sharedDataService,$location) {
-	$scope.food={};
+app.controller('addTransportationController',['$scope','$http','$log','transportationService','$mdDialog','appConstants','uiGridConstants','sharedDataService','$location','configServiceTrans',
+									function($scope,$http,$log,transportationService,$mdDialog,appConstants,uiGridConstants,sharedDataService,$location,configServiceTrans) {
+	$scope.transportation={};
 
 	$scope.numRows = 10;
 	$scope.itemsPerPage = appConstants.ITEMS_PER_PAGE;
@@ -55,9 +53,9 @@ app.controller('addTransportationController',['$scope','$http','$log','transport
 		  };
 	 $scope.submit=function(){
 	
-		 transportationService.addFoodExpense($scope.food).then(function(msg){
+		 transportationService.addTransportationExpense($scope.transportation).then(function(msg){
 				
-					 $scope.sendSharedMessage(msg,'/addFood');
+					 $scope.sendSharedMessage(msg,'/addTransportation');
 				
 	    	}).catch(function(msg){
 	    		$scope.message=msg;
@@ -100,12 +98,13 @@ app.controller('addTransportationController',['$scope','$http','$log','transport
 			$scope.format = $scope.formats[0];
 			$scope.categorys=['Online','By Cash'];
 			
-	 $scope.loadFoodData = function() {
+	 $scope.loadTransportationData = function() {
 		
-		 transportationService.getFoodData().then(function(data){
-					$scope.position=data;
-					$scope.gridOptions.data = data;
-					$scope.gridOptions.totalItems = data.length;
+		 transportationService.getTransportationData().then(function(data){
+			        $scope.transportationData = data._embedded.transportation;
+					$scope.position=data._embedded.transportation;
+					$scope.gridOptions.data = data._embedded.transportation;
+					$scope.gridOptions.totalItems =(data._embedded.transportation).length;
 					$scope.gridOptions.paginationPageSize = $scope.numRows;
 					$scope.gridOptions.minRowsToShow = data.length < $scope.numRows ? data.length : $scope.numRows;
 				}).catch(function(msg){
@@ -113,9 +112,7 @@ app.controller('addTransportationController',['$scope','$http','$log','transport
 			   	  $scope.errorHide = false;
 			   	  $scope.errorMsg = msg;
 			     })
-		 
-		
-	  }
+	      }
 		$scope.gridOptions = {
 			    enableSorting: true,
 			    enableColumnMenus: false,
@@ -124,11 +121,11 @@ app.controller('addTransportationController',['$scope','$http','$log','transport
 		        enableVerticalScrollbar   : uiGridConstants.scrollbars.NEVER,
 				paginationCurrentPage: 1,
 			    columnDefs: [
-			      { field: 'expense', displayName:"Expense", cellClass: 'ui-grid-align'},
+			      { field: 'expense', displayName:"Expense", cellClass: 'ui-grid-align', cellTemplate: '<div class="text-wrap"><a ng-click="grid.appScope.editTransportation(row.entity.id); $event.stopPropagation();">{{row.entity.expense}}<md-tooltip>{{row.entity.expense}}} </md-tooltip> </a></div>'},
 			      { field: 'date', displayName:"Date", cellClass: 'ui-grid-align'},
 			      { field: 'category', displayName:"category", width: 100, cellClass: 'ui-grid-align'},
-			      { field: 'description', displayName:"Description", width: 100, cellClass: 'ui-grid-align'}
-			      
+			      { field: 'description', displayName:"Description", width: 100, cellClass: 'ui-grid-align'},
+			      { field: 'delete', enableSorting: false, cellTemplate: '<a class="glyphicon glyphicon-remove" ng-click="grid.appScope.deleteTransportation(row.entity)"></a>' }
 			    ],
 			    onRegisterApi: function( gridApi ) {
 			    	$scope.gridApi = gridApi;
@@ -136,7 +133,26 @@ app.controller('addTransportationController',['$scope','$http','$log','transport
 			    }
 			  };
 	
-		$scope.loadFoodData();
+		$scope.loadTransportationData();
+		$scope.deleteTransportation = function(rowEntity) {
+			sharedDataService.showConformPopUp("Are you sure you want to delete?","Delete Transportation",$mdDialog).then(function(){
+				$scope.transportationData.splice($scope.transportationData.indexOf(rowEntity), 1);
+	        	transportationService.deleteTransportation(rowEntity.id).then(function(msg){
+		        	$scope.message = rowEntity.expense+ " " + msg;
+		        	$scope.cls = appConstants.SUCCESS_CLASS;
+		        	$timeout(function() { $scope.alHide();},3000);
+	    		}).catch(function(deleteMessage){
+	    			sendSharedMessage(msg, appConstants.ERROR_CLASS);
+	                $timeout(function() { $scope.alHide(); }, 5000);
+	    		}); 
+			});
+			$scope.editTransportation = function(cnt) {
+				configServiceTrans.setId(cnt);
+				location.href='#/viewTransportation';
+				
+			};
+	    }
+		/*http://localhost:8080/people/search/findByLastName{?name}*/
 		$scope.gotoAnchor = function() {
 		       var newHash = 'top';
 		       if ($location.hash() !== newHash) {
