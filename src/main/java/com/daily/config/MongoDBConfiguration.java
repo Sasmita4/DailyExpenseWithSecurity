@@ -4,6 +4,7 @@ import org.mongeez.Mongeez;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -17,6 +18,7 @@ import com.mongodb.Mongo;
 @Configuration
 @EnableMongoRepositories("com.daily.repository")
 @Import(value = MongoAutoConfiguration.class)
+@RefreshScope
 public class MongoDBConfiguration extends AbstractMongoConfiguration{
 	
 	@Autowired

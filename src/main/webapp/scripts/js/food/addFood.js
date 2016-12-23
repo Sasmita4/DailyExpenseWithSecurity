@@ -55,6 +55,7 @@ app.controller('addFoodController',['$scope','$state','$http','$log','$mdDialog'
 //		 $scope.food=$scope.food.date.toString();
 			foodService.addFoodExpense($scope.food).then(function(msg){
 					 $scope.sendSharedMessage(msg,'/addFood');
+					 $scope.gridOptions.data.push($scope.food)
 	    	}).catch(function(msg){
 	    		$scope.message=msg;
 	    		$scope.cls=appConstants.ERROR_CLASS;
@@ -141,7 +142,8 @@ app.controller('addFoodController',['$scope','$state','$http','$log','$mdDialog'
 				paginationCurrentPage: 1,
 			    columnDefs: [
 			      { field: 'expense', displayName:"Expense", cellClass: 'ui-grid-align',cellTemplate: '<div class="text-wrap"><a ng-click="grid.appScope.editFood(row.entity.id); $event.stopPropagation();">{{row.entity.expense}}<md-tooltip>{{row.entity.expense}}} </md-tooltip> </a></div>'},
-			      { field: 'date', displayName:"Date", cellClass: 'ui-grid-align'},
+			   //   { field: 'date', displayName:"Date", cellClass: 'ui-grid-align'},
+			      { field: 'date', displayName:"Date", cellClass: 'ui-grid-align',type: 'date', cellFilter: 'date:\'dd-MM-yyyy\''},
 			      { field: 'category', displayName:"category", width: 100, cellClass: 'ui-grid-align'},
 			      { field: 'description', displayName:"Description", width: 100, cellClass: 'ui-grid-align'},
 			      { field: 'delete', enableSorting: false, cellTemplate: '<a class="glyphicon glyphicon-remove" ng-click="grid.appScope.deleteFood(row.entity)"></a>' }
