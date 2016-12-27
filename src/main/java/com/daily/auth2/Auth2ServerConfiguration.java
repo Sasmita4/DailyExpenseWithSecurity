@@ -20,7 +20,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import com.daily.util.DailyExpenseConstants;
 
 @Configuration
-public class auth2ServerConfiguration extends AuthorizationServerConfigurerAdapter {
+public class Auth2ServerConfiguration extends AuthorizationServerConfigurerAdapter {
 	 	
 		@Configuration
 	    @EnableResourceServer
@@ -34,8 +34,8 @@ public class auth2ServerConfiguration extends AuthorizationServerConfigurerAdapt
 
 			@Override
 			public void configure(HttpSecurity http) throws Exception {
-				http.anonymous().disable().requestMatchers().antMatchers("/home").and().authorizeRequests()
-						.antMatchers("/home").access("hasRole('ROLE_ADMIN')").and().exceptionHandling()
+				http.anonymous().disable().requestMatchers().antMatchers("/home/**").and().authorizeRequests()
+						.antMatchers("/home/**").permitAll().and().exceptionHandling()
 						.accessDeniedHandler(new OAuth2AccessDeniedHandler());
 			}
 	 }

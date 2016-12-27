@@ -5,14 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +51,8 @@ public class CommonReportController {
 	
 	/*for Getting reports based on date and type*/
     @RequestMapping(value = "/searchExpenses", method = RequestMethod.POST)
+	@PreAuthorize("hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')")
+    //@PreAuthorize("#user.name == principal.name")
     @Transactional(readOnly = true)
      public @ResponseBody ModelAndView expenseReport(@Valid @RequestBody SearchDto searchDto,ModelAndView modelAndView,HttpServletResponse response) throws URISyntaxException {
     	List<ReportResultDto> reportResult = reportService.reportCommonService(searchDto);

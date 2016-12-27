@@ -39,7 +39,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-		.antMatchers("/", "/login").permitAll()
+		//.antMatchers("/", "/login").permitAll()
 		.antMatchers("/oauth/token").permitAll()
 		.and().formLogin().loginPage("/login")
 		.usernameParameter("ssoId").passwordParameter("password").successForwardUrl("/home").and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
@@ -53,7 +53,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 
 	@Bean
 	public TokenStore tokenStore() {
-		return new InMemoryTokenStore();
+      		return new InMemoryTokenStore();
 	}
 
 	@Bean
