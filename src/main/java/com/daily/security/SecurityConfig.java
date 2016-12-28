@@ -41,13 +41,15 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 		http.csrf().disable().authorizeRequests()
 		//.antMatchers("/", "/login").permitAll()
 		.antMatchers("/oauth/token").permitAll()
-		.and().formLogin().loginPage("/login")
-		.usernameParameter("ssoId").passwordParameter("password").successForwardUrl("/home").and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+		.antMatchers("/swagger").permitAll()
+		.and().formLogin().loginPage("/login").failureUrl("/accessDenied")
+		.usernameParameter("ssoId").passwordParameter("password").successForwardUrl("/home").and().logout().logoutSuccessUrl("/logout").and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
 	}
 
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
+
 		return super.authenticationManagerBean();
 	}
 

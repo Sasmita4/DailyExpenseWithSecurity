@@ -1,7 +1,5 @@
 package com.daily.controller;
 
-import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,19 +17,20 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 	private final Logger log = LoggerFactory.getLogger(LoginController.class);
-	   @RequestMapping(value = "/accessdenied", method = RequestMethod.GET)
-	 		public ModelAndView errorPage(ModelMap model , Principal principal) {
-		   		String userName = principal.getName();
-		   		ModelAndView mv = new ModelAndView("accessdenied.html");
+	   @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+	 		public ModelAndView errorPage(ModelMap model) {
+		   Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		      String userName = auth.getName();
+		   		ModelAndView mv = new ModelAndView("redirect:/invalidUser.html");
 		   		mv.addObject("message", "sorry" +userName+" You don't have privileges to view this page!!!");
 		   		return mv;
 	 		}
-	   @RequestMapping(value="/logout", method = RequestMethod.GET)
+	   @RequestMapping(value="/logout", method = RequestMethod.POST)
 	   public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
 	       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	       if (auth != null){    
 	           new SecurityContextLogoutHandler().logout(request, response, auth);
 	       }
-	       return "redirect:/home?logout";
+	       return "success";
 	   }
 }
