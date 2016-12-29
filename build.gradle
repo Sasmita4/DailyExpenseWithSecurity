@@ -54,7 +54,7 @@ dependencies {
 		
 		compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.0.1'
 		compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.0.1'
-		
+		compile group: 'info.cukes', name: 'gherkin-jvm-deps', version: '1.0.0'
 		
 		
 		testCompile('org.springframework.boot:spring-boot-starter-test')

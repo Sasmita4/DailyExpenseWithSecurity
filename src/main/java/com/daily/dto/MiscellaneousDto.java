@@ -6,14 +6,20 @@ public class MiscellaneousDto implements Serializable{
 	/**
 	 * 
 	 */
-	
 	private static final long serialVersionUID = -8354988407143625423L;
+	private String id;
 	private String date;
 	private String description;
 	private String category;
 	private String expense;
 	private String email;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getEmail() {
 		return email;
 	}

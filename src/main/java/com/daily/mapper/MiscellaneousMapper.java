@@ -13,9 +13,11 @@ public class MiscellaneousMapper {
 		 MiscellaneousDto miscellaneousDto = new MiscellaneousDto();
 	    	if(miscellaneous !=null){
 	    		try{
+	    			miscellaneousDto.setId(miscellaneous.getId());
 	    			miscellaneousDto.setCategory(miscellaneous.getCategory());
 	    			miscellaneousDto.setDescription(miscellaneous.getDescription());
 	    			miscellaneousDto.setExpense(miscellaneous.getExpense());
+	    			miscellaneousDto.setEmail(miscellaneous.getEmail());
 	    			miscellaneousDto.setDate(DateConversionUtil.dateToString(miscellaneous.getDate()));
 	    	    }
 	    	catch(Exception ex){
@@ -28,6 +30,7 @@ public class MiscellaneousMapper {
 		 Miscellaneous miscellaneous = new Miscellaneous();
 	    	if(miscellaneousDto!=null){
 	    		try{
+	    			miscellaneous.setId(miscellaneousDto.getId());
 	    			miscellaneous.setCategory(miscellaneousDto.getCategory());
 	    			miscellaneous.setDescription(miscellaneousDto.getDescription());
 	    			miscellaneous.setExpense(miscellaneousDto.getExpense());
