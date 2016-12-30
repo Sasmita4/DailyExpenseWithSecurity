@@ -1,4 +1,4 @@
-package com.daily.taskScheduling;
+/*package com.daily.taskScheduling;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,3 +19,4 @@ public class ScheduledTasks {
         log.info("The time is now {}", dateFormat.format(new Date()));
     }
 }
+*/

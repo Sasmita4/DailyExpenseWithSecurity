@@ -1,5 +1,6 @@
-package com.daily.food.controller;
+package com.daily.Miscellaneous.controller;
 
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -25,6 +26,7 @@ import com.daily.controller.MiscellaneousController;
 import com.daily.domain.Miscellaneous;
 import com.daily.dto.MiscellaneousDto;
 import com.daily.mapper.MiscellaneousMapper;
+import com.daily.service.MiscellaneousService;
 import com.daily.util.MockTestUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -36,7 +38,6 @@ public class MiscellaneousControllerTest {
 	private static final String DEFAULT_CATEGORY = "Online";
 	private static final String DEFAULT_EXPENSE = "100";
 	private static final String DEFAULT_EMAIL = "smaharana@nisum.com";
-	
 	private static final Date DEFAULT_DATE = new Date();
 	
 	
@@ -52,6 +53,9 @@ public class MiscellaneousControllerTest {
 	
 	@InjectMocks
 	MiscellaneousMapper miscellaneousMapper;
+	
+	@InjectMocks
+	MiscellaneousService miscellaneousService;
 	
 	@Before
 	public void init() {
@@ -76,9 +80,9 @@ public class MiscellaneousControllerTest {
 	
 	@Test
 	public void deleteMiscellaneousExpenseTest() throws Exception{
+		doNothing().when(miscellaneousService).deleteMiscellaneous("1");
 		mockMvc.perform(delete("/deleteMiscellaneous")
 			   .param("id", "1")).andExpect(status().isOk());
 	}
-	
 
 }

@@ -1,8 +1,5 @@
 app.controller('viewFoodController',['$scope','configService','foodService',
 									function($scope,configService1,foodService) {
-	 
-	
-	
 	 $scope.updateSubmit=function(){
 			foodService.updateFoodExpense($scope.food).then(function(msg){
 			$scope.sendSharedMessage(msg,'/addFood');

@@ -1,5 +1,7 @@
 package com.daily.auth2;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
@@ -21,10 +23,12 @@ import com.daily.util.DailyExpenseConstants;
 
 @Configuration
 public class Auth2ServerConfiguration  {
+	Logger log = LoggerFactory.getLogger(Auth2ServerConfiguration.class);
 	 	
 		@Configuration
 	    @EnableResourceServer
 	    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+			Logger resourseServerLog = LoggerFactory.getLogger(ResourceServerConfiguration.class);
 		 private static final String RESOURCE_ID = "my_rest_api";
 
 			@Override
