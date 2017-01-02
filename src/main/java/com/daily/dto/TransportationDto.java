@@ -8,17 +8,17 @@ public class TransportationDto implements Serializable{
 	/**
 	 * 
 	 */
+	private String id;
 	private String date;
 	private String description;
 	private String category;
 	private String expense;
 	private String email;
-	
-	public String getEmail() {
-		return email;
+	public String getId() {
+		return id;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getDate() {
 		return date;
@@ -44,5 +44,10 @@ public class TransportationDto implements Serializable{
 	public void setExpense(String expense) {
 		this.expense = expense;
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

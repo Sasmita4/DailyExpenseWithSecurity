@@ -54,9 +54,7 @@ app.controller('addTransportationController',['$scope','$http','$log','transport
 	 $scope.submit=function(){
 	
 		 transportationService.addTransportationExpense($scope.transportation).then(function(msg){
-				
 					 $scope.sendSharedMessage(msg,'/addTransportation');
-				
 	    	}).catch(function(msg){
 	    		$scope.message=msg;
 	    		$scope.cls=appConstants.ERROR_CLASS;

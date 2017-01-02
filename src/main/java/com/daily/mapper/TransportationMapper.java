@@ -13,6 +13,8 @@ public class TransportationMapper {
 		TransportationDto transportationDto = new TransportationDto();
     	if(transportation !=null){
     		try{
+    			transportationDto.setId(transportation.getId());
+    			transportationDto.setEmail(transportation.getEmail());
     			transportationDto.setCategory(transportation.getCategory());
     			transportationDto.setDescription(transportation.getDescription());
     			transportationDto.setExpense(transportation.getExpense());
@@ -28,6 +30,8 @@ public class TransportationMapper {
 		Transportation transportation = new Transportation();
     	if(transportionDto!=null){
     		try{
+    			transportation.setId(transportionDto.getId());
+    			transportation.setEmail(transportionDto.getEmail());
     			transportation.setCategory(transportionDto.getCategory());
     			transportation.setDescription(transportionDto.getDescription());
     			transportation.setExpense(transportionDto.getExpense());

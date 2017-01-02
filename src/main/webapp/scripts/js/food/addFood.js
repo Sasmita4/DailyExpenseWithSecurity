@@ -1,7 +1,6 @@
 app.controller('addFoodController',['$scope','$state','$http','$log','$mdDialog','foodService','appConstants','uiGridConstants','sharedDataService','$location','configService',
 									function($scope,$http,$state,$log,$mdDialog,foodService,appConstants,uiGridConstants,sharedDataService,$location,configService) {
 	$scope.food={};
-
 	$scope.numRows = 10;
 	$scope.itemsPerPage = appConstants.ITEMS_PER_PAGE;
 	$scope.currentPage = 0;
@@ -127,7 +126,6 @@ app.controller('addFoodController',['$scope','$state','$http','$log','$mdDialog'
 	    }
 		
 		$scope.editFood = function(cnt) {
-			debugger;
 			configService.setId(cnt);
 			location.href='#/viewFood';
 			
