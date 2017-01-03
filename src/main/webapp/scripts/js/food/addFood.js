@@ -66,7 +66,6 @@ app.controller('addFoodController',['$scope','$state','$http','$log','$mdDialog'
 		  };
 		  
 	    $scope.today();
-
 		$scope.clear = function () {
 		    $scope.dt = null;
 		};
