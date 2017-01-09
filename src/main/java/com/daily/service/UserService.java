@@ -1,16 +1,24 @@
 package com.daily.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.daily.dao.UsersDao;
 import com.daily.domain.Users;
+import com.daily.dto.UsersDto;
+import com.daily.mapper.UserMapper;
 
 @Service
 public class UserService {
 
 	@Autowired
 	UsersDao usersDao;
+	
+	@Autowired
+	UserMapper userMapper;
 
 	public Users loadUserByUsername(String username) {
 		Users result = usersDao.getOne(username);
@@ -21,5 +29,15 @@ public class UserService {
 			
 		}*/
 		return result;
+	}
+	
+	public List<UsersDto> getUsers() {
+		List<Users> result = usersDao.getAllUsers();
+		List<UsersDto> usersDtoList = new ArrayList<UsersDto>();
+		for(Users user : result){
+			UsersDto userDto = userMapper.userToUserDto(user);
+			usersDtoList.add(userDto);
+		}
+		return usersDtoList;
 	}
 }

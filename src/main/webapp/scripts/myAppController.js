@@ -3,5 +3,4 @@ myApp.controller("myAppCtrl", ['$scope',
 $scope.submitLogin=function(){
 	location.href='home';
 }
-
 }]);

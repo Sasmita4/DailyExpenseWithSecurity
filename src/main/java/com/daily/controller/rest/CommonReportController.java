@@ -51,7 +51,7 @@ public class CommonReportController {
 	
 	/*for Getting reports based on date and type*/
     @RequestMapping(value = "/searchExpenses", method = RequestMethod.POST)
-	@PreAuthorize("hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')")
     //@PreAuthorize("#user.name == principal.name")
     @Transactional(readOnly = true)
      public @ResponseBody ModelAndView expenseReport(@Valid @RequestBody SearchDto searchDto,ModelAndView modelAndView,HttpServletResponse response) throws URISyntaxException {

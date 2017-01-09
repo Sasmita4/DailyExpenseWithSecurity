@@ -1,0 +1,30 @@
+<div style="width: 90%;">
+ <form name="usersList_form" ng-controller="userListController">
+  <div class="panel panel-default" style="overflow:scroll;height:500px;">
+	<div class="panel-heading" style="height: 50px;" align="center">
+		<h4 style="color: white;">Registered Users</h4>
+	</div>
+	<div class="panel-body" align="left">
+  </div>
+<br>
+	<div class="searchposition-container" style="border:none;">
+		<div class="row">
+				<div  ui-grid="gridOptions" class="ui-grid-conf searchprof-grid" ui-grid-pagination>
+					<div class="no-rows" ng-if="!gridOptions.data.length">
+						<div class="msg">
+							<span>No Records exists</span>
+						</div>
+					</div>
+					<div>
+						<span class="grid-tot-rec">Total Records : {{gridOptions.totalItems}}</span>
+						<div class="text-center pull-right ui-gri-pager" ng-show="gridOptions.totalItems > numRows">
+							<pagination class="pagination-sm" total-items="gridOptions.totalItems" items-per-page="gridOptions.paginationPageSize" 
+					         ng-model="gridOptions.paginationCurrentPage"></pagination>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </form>
+</div>

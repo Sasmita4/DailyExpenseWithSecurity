@@ -1,5 +1,7 @@
 package com.daily.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,10 @@ public class UsersDao {
 	public Users getOne(String userName){
 		Users userResult = usersRepository.findByUserName(userName);
 		return userResult;
+	}
+	public List<Users> getAllUsers(){
+		List<Users> userList = usersRepository.findAll();
+		return userList;
 	}
 	
 }
