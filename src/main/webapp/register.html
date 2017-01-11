@@ -82,44 +82,51 @@
 
 </head>
 <body>
+
+<body>
 	<div ng-include="'header.html'"></div>
-	<div class="account-container" ng-controller="myAppCtrl" style="width: 500px; height: 200px;  left: 120px; padding :20px;">
-				<form id="login-form" action="login" method="post">
-					<!--  <c:if test="${param.error != null}">
-								<div class="alert alert-danger">
-									<p>Invalid username and password.</p>
-								</div>
-							</c:if>-->
-				   <div class="form-group">
-			            <label style="width:150px;" for="username">Username:</label>
-			            <input type="text" name="ssoId" id="username" style="width:200px;"/>
-        		  </div>
-		        <div class="form-group" >
-		            <label style="width:150px;" for="password">Password</label>
-		            <input type="password"  style="width:200px;" name="password" id="password"/>
-		            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		           
-		        </div>
-		        <center>
-					<div class="form-actions">
-		           <input type="submit" value="Login" id="login-submit" />
-		        </div>	
-		        </center>
-		           <div class="form-group">
-		            <div class="col-md-6">
- 		            <p><a ng-href="registerurl">Register Now!</a></p>
- 		            </div>
- 		            <div class="col-md-6">
- 			        <p><a href="forgot-password.html">Forgot password?</a></p>
- 			        </div>
- 			        </div>
+	<div class="account-container"  style="width: 500px; height: 300px;  left: 120px; padding :20px;">
+				<form id="registration_form" action="register" method="post">
+					<div class="form-group">
+				<div class="col-md-1" >
+					<input type="radio" value="None" id="radioOne" name="account" checked/>
+				</div>
+				<div class="col-md-4">
+					<label for="radioOne" style ="margin-top: 1px;" class="radio" checked>Personal</label>
+				</div>
+				<div class="col-md-1">
+					<input type="radio" value="None" id="radioTwo" name="account" />
+				</div>
+				<div class="col-md-4">
+					<label for="radioTwo" style ="margin-top: 1px;" class="radio">Company</label>
+				</div>
+	       </div>
+    	<div class="form-group">
+ 					<!-- <i class="icon-envelope"></i><b class="mandatory"></b> -->
+					<input type="text" ng-model="email" class="form-control" placeholder="Email"  
+					 required data-errormessage-value-missing="Add some text">
+	    </div>
+	    <div class="form-group">
+ 					<!-- <i class="icon-user"></i><b class="mandatory"></b> -->
+ 					<input type="text" ng-model="username" class="form-control" placeholder="UserName" 
+					 required data-errormessage-value-missing="Add some text">
+	    </div>
+	    <div class="form-group">
+ 					<!-- <i class="icon-shield"></i><b class="mandatory"></b> -->
+ 					<input type="password" ng-model="password" class="form-control" placeholder="password"  
+					 required data-errormessage-value-missing="Add some text">
+		</div>
+   		<div class="form-group">
+				<p>By clicking Register, you are agree on our <a href="#">terms & conditions</a>.</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="btn btn-info active" type="submit" ng-disabled="registration_form.$invalid" ng-click="submit()">
+					<i class="glyphicon glyphicon-ok-circle"></i>Register
+				</button>
+		</div>
         </form>
     </div>
-		 		
 	<div style="height:35%;"></div>
 		<br>
 		<div ng-include="'footer.html'"></div>
 		<script type="text/javascript" src="scripts/myApp.js"></script>
 		<script type="text/javascript" src="scripts/myAppController.js"></script>
 </body>
-</html>

@@ -39,8 +39,10 @@ public class Auth2ServerConfiguration  {
 			@Override
 			public void configure(HttpSecurity http) throws Exception {
 				http.anonymous().disable().requestMatchers().antMatchers("/home/**").and().authorizeRequests()
-						.antMatchers("/home/**").access("hasRole('ROLE_ADMIN')")
+						//.antMatchers("/home/**").access("hasRole('ROLE_ADMIN')")
+						.antMatchers("/home/**").permitAll()
 		                .antMatchers("/swagger").permitAll()
+		                .antMatchers("/getAllUsers").access("hasRole('ROLE_ADMIN')")
 						.and().exceptionHandling()
 						.accessDeniedHandler(new OAuth2AccessDeniedHandler());
 			}

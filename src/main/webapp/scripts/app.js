@@ -14,7 +14,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	    .state('viewFood', { url: '/viewFood',templateUrl: 'views/food/viewFood.html',controller:'viewFoodController'})
 	    .state('viewTransportation', { url: '/viewTranportation',templateUrl: 'views/tranportation/viewTranportation.html',controller:'viewTranportationController'})
 	    .state('main.report', {url:'/searchReport',templateUrl: 'views/reports/report.html',controller:'reportController'})
-	  $urlRouterProvider.otherwise('/');
+	    $urlRouterProvider.otherwise('/');
 }]);
 
     
