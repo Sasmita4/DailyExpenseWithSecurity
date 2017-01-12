@@ -13,6 +13,9 @@ public class UsersDto implements Serializable{
 	private String password;
 	private String email;
 	private String createdDate;
+	private boolean activated = false;
+	private String activationKey;
+	
 	private List<String> authorities;
 	public String getUserName() {
 		return userName;
@@ -43,5 +46,17 @@ public class UsersDto implements Serializable{
 	}
 	public void setAuthorities(List<String> authorities) {
 		this.authorities = authorities;
+	}
+	public boolean isActivated() {
+		return activated;
+	}
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+	public String getActivationKey() {
+		return activationKey;
+	}
+	public void setActivationKey(String activationKey) {
+		this.activationKey = activationKey;
 	}
 }

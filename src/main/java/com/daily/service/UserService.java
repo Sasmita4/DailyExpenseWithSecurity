@@ -40,4 +40,10 @@ public class UserService {
 		}
 		return usersDtoList;
 	}
+	
+	public UsersDto registerUser(UsersDto usersDto){
+		Users user = userMapper.userDtoToUsers(usersDto);
+		UsersDto dto = userMapper.userToUserDto(usersDao.registerUser(user));
+		return dto;
+	}
 }

@@ -32,6 +32,10 @@ public class Users implements Serializable{
 	@NotNull
 	private Date createdDate;
 	
+	private boolean activated;
+	
+	private String activationKey;
+	
 	@NotNull
 	private List<String> authorities;
 
@@ -73,6 +77,22 @@ public class Users implements Serializable{
 
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public boolean isActivated() {
+		return activated;
+	}
+
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+
+	public String getActivationKey() {
+		return activationKey;
+	}
+
+	public void setActivationKey(String activationKey) {
+		this.activationKey = activationKey;
 	}
 
 	public List<String> getAuthorities() {

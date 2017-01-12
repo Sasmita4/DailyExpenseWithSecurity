@@ -25,5 +25,9 @@ public class UsersDao {
 		List<Users> userList = usersRepository.findAll();
 		return userList;
 	}
+	public Users registerUser(Users users){
+		Users users1 = usersRepository.save(users);
+		return users1;
+	}
 	
 }
