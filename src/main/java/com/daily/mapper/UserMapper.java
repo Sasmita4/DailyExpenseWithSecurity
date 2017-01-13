@@ -25,6 +25,8 @@ public class UserMapper {
 			dto.setUserName(user.getUserName());
 			dto.setPassword(user.getPassword());
 			dto.setEmail(user.getEmail());
+			dto.setActivationKey(user.getActivationKey());
+			dto.setActivated(user.isActivated());
 			dto.setCreatedDate(DateConversionUtil.dateToString(user.getCreatedDate()));
 			for(String role : user.getAuthorities()){
 				roleList.add(role);

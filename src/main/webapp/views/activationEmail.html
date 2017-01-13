@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{email.activation.title}">DailyExpense</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <p>
+            Dear  <span th:text="|${user.userName}|">, </span> 
+        </p>
+        <p>
+            Your DailyExpense account has been created, please click on the URL below to activate it:
+        </p>
+        <p>
+            <a th:href="@{|${baseUrl}/#/activate?key=${user.activationKey}|}"
+               th:text="|${user.userName}|">Activation Link</a>
+        </p>
+        <p>
+        	User Name : <span th:text="|${user.userName}|"> </span> 
+        	<br/>
+        	Password  : <span th:text="|${user.password}|"> </span> 
+        	<br/>
+        	Title  :    <span th:text="${title}"> </span> 
+        </p>
+        <p>
+            Regards,
+           </p>
+            <p>
+           DailyExpenseTracker.</p>
+        
+    </body>
+</html>

@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,12 +56,8 @@ public class LoginController {
 	   }
 	   return "success";
 	}
-	@RequestMapping("/registerUser")
-	public  void registerUser(HttpServletRequest request){
-	   UsersDto usersDto = new UsersDto();
-	   usersDto.setEmail(toMail);
-	   usersDto.setUserName("madhavi");
-	   usersDto.setPassword("nisum");
+	@RequestMapping(value = "/registerUser" , method = RequestMethod.POST)
+	public  void registerUser(@RequestBody UsersDto usersDto,HttpServletRequest request){
 	   UsersDto result = userService.registerUser(usersDto);
 		String baseUrl = request.getScheme() +
 				  		 "://"+

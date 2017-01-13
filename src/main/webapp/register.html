@@ -81,38 +81,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
 </head>
 <body>
-
-<body>
 	<div ng-include="'header.html'"></div>
 	<div class="account-container"  style="width: 500px; height: 300px;  left: 120px; padding :20px;">
-				<form id="registration_form" action="register" method="post">
-					<div class="form-group">
-				<div class="col-md-1" >
-					<input type="radio" value="None" id="radioOne" name="account" checked/>
-				</div>
-				<div class="col-md-4">
-					<label for="radioOne" style ="margin-top: 1px;" class="radio" checked>Personal</label>
-				</div>
-				<div class="col-md-1">
-					<input type="radio" value="None" id="radioTwo" name="account" />
-				</div>
-				<div class="col-md-4">
-					<label for="radioTwo" style ="margin-top: 1px;" class="radio">Company</label>
-				</div>
-	       </div>
+		<form name="registration_form" ng-controller="registerCtrl">
+				  <div class="form-group">
+						<div class="col-md-1" >
+							<input type="radio" value="None" id="radioOne" name="account" checked/>
+						</div>
+						<div class="col-md-4">
+							<label for="radioOne" style ="margin-top: 1px;" class="radio" checked>Personal</label>
+						</div>
+						<div class="col-md-1">
+							<input type="radio" value="None" id="radioTwo" name="account" />
+						</div>
+						<div class="col-md-4">
+							<label for="radioTwo" style ="margin-top: 1px;" class="radio">Company</label>
+						</div>
+	      		 </div>
     	<div class="form-group">
- 					<!-- <i class="icon-envelope"></i><b class="mandatory"></b> -->
-					<input type="text" ng-model="email" class="form-control" placeholder="Email"  
+ 					<!-- <i class="icon-user"></i><b class="mandatory"></b> -->
+ 					<input type="text" ng-model="user.userName" class="form-control" placeholder="UserName" 
 					 required data-errormessage-value-missing="Add some text">
 	    </div>
 	    <div class="form-group">
- 					<!-- <i class="icon-user"></i><b class="mandatory"></b> -->
- 					<input type="text" ng-model="username" class="form-control" placeholder="UserName" 
+ 					<!-- <i class="icon-envelope"></i><b class="mandatory"></b> -->
+					<input type="text" ng-model="user.email" class="form-control" placeholder="Email"  
 					 required data-errormessage-value-missing="Add some text">
 	    </div>
 	    <div class="form-group">
  					<!-- <i class="icon-shield"></i><b class="mandatory"></b> -->
- 					<input type="password" ng-model="password" class="form-control" placeholder="password"  
+ 					<input type="password" ng-model="user.password" class="form-control" placeholder="password"  
 					 required data-errormessage-value-missing="Add some text">
 		</div>
    		<div class="form-group">
@@ -128,4 +126,6 @@
 		<div ng-include="'footer.html'"></div>
 		<script type="text/javascript" src="scripts/myApp.js"></script>
 		<script type="text/javascript" src="scripts/myAppController.js"></script>
+		<script type="text/javascript" src="scripts/js/register/register.js"></script>
+		<script type="text/javascript" src="scripts/js/register/registerService.js"></script>
 </body>
