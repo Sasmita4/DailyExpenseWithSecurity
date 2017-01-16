@@ -14,6 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.daily.domain.Users;
+import com.daily.error.UserNotActivatedException;
 import com.daily.service.UserService;
 
 @Component
@@ -28,6 +29,9 @@ public class DailyAuthenticationProvider implements org.springframework.security
 		String password = (String) authentication.getCredentials();
 		
 		Users user = usersService.loadUserByUsername(username);
+		if(!user.isActivated()){
+			throw new UserNotActivatedException("user" +username+"was not activated");
+		}
 		if (user == null || !StringUtils.equalsIgnoreCase(user.getUserName(), username)) {
 			throw new BadCredentialsException("Username not found.");
 		}
