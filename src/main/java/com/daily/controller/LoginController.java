@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -15,6 +18,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,8 +43,12 @@ public class LoginController {
 	@Value("${send.to.email}")
 	private String toMail;
 	
+	/*
+	 * GET /accessDenied -> for invalid user logged in
+	 */
 	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
 	public ModelAndView errorPage(ModelMap model) {
+		log.info("inside errorPage(ModelMap model) method");
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    String userName = auth.getName();
 		ModelAndView mv = new ModelAndView("redirect:/invalidUser.html");
@@ -50,12 +58,17 @@ public class LoginController {
 	
 	@RequestMapping(value="/logout", method = RequestMethod.POST)
 	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+		log.info("inside logoutPage () method");
 	   Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	   if (auth != null){    
 	       new SecurityContextLogoutHandler().logout(request, response, auth);
 	   }
 	   return "success";
 	}
+	
+	/**
+     * POST  /registerUser -> register the new user.
+     */
 	@RequestMapping(value = "/registerUser" , method = RequestMethod.POST)
 	public  void registerUser(@RequestBody UsersDto usersDto,HttpServletRequest request){
 	   UsersDto result = userService.registerUser(usersDto);
@@ -69,4 +82,13 @@ public class LoginController {
 		
 		mailService.sendActivationEmail(result, baseUrl);
 	}
+	 /**
+     * GET  /activate -> activate the registered user.
+     */
+    @RequestMapping(value = "/activate", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> activateAccount(@RequestParam(value = "key") String key) {
+    	log.info("inside activateAccount() method");
+    	userService.activateRegistration(key);
+    	return new ResponseEntity<String>(HttpStatus.OK);
+    }
 }

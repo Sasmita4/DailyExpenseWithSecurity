@@ -29,5 +29,8 @@ public class UsersDao {
 		Users users1 = usersRepository.save(users);
 		return users1;
 	}
-	
+	public Users getUserByKey(String key){
+		Users result = usersRepository.findByActivationKey(key);
+		return result;
+	}
 }

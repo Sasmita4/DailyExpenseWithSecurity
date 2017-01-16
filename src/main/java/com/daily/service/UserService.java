@@ -46,4 +46,10 @@ public class UserService {
 		UsersDto dto = userMapper.userToUserDto(usersDao.registerUser(user));
 		return dto;
 	}
+
+	public void activateRegistration(String key) {
+		Users result = usersDao.getUserByKey(key);
+		result.setActivated(true);
+		usersDao.registerUser(result);
+	}
 }
