@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/req-stylesheet.css">
 <link rel="stylesheet" href="css/circle.css">
+<link rel="stylesheet" href="css/social.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 
 <link rel="stylesheet"    href="styles/footer.css">
@@ -39,6 +40,7 @@
 
 <link href="lib/angular/css/animation.css" rel="stylesheet">
 <link href="lib/angular-ui-grid/ui-grid.min.css" rel="stylesheet">
+
 
 
 <script src="lib/utility/js/jquery-2.2.0.min.js"></script>
@@ -80,46 +82,53 @@
 <link rel="stylesheet" href="styles/login.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
 
+<script type="text/javascript" src="scripts/myApp.js"></script>
+<script type="text/javascript" src="scripts/myAppController.js"></script>
+
 </head>
 <body>
 	<div ng-include="'header.html'"></div>
 	<div class="account-container" ng-controller="myAppCtrl" style="width: 500px; height: 200px;  left: 120px; padding :20px;">
-				<form id="login-form" action="login" method="post">
+		<form id="login-form" action="login" method="post">
 					<!--  <c:if test="${param.error != null}">
 								<div class="alert alert-danger">
 									<p>Invalid username and password.</p>
 								</div>
 							</c:if>-->
-				   <div class="form-group">
-			            <label style="width:150px;" for="username">Username:</label>
-			            <input type="text" name="ssoId" id="username" style="width:200px;"/>
-        		  </div>
-		        <div class="form-group" >
-		            <label style="width:150px;" for="password">Password</label>
-		            <input type="password"  style="width:200px;" name="password" id="password"/>
+			   <div class="form-group">
+		            <input type="text" name="ssoId" id="username" class="form-control" placeholder="Username"/>
+       		  </div>
+		      <div class="form-group" >
+		            <input type="password"  name="password" id="password" class="form-control" placeholder="Password"/>
 		            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		           
-		        </div>
-		        <center>
-					<div class="form-actions">
-		           <input type="submit" value="Login" id="login-submit" />
-		        </div>	
-		        </center>
-		           <div class="form-group">
-		            <div class="col-md-6">
- 		            <p><a ng-href="registerurl">Register Now!</a></p>
- 		            </div>
- 		            <div class="col-md-6">
- 			        <p><a href="forgot-password.html">Forgot password?</a></p>
- 			        </div>
- 			        </div>
+		      </div>
+		      <div class="form-group">
+		          <div class="col-md-2" style="padding: 1px;">
+ 		            <a ng-href="registerurl">Register!</a>
+ 		          </div>
+ 		          <div class="col-md-4">
+ 		             <a href="forgot-password.html">Forgot password?</a>
+ 		          </div>
+ 		          <div class="col-md-4" >
+					 <input type="checkbox" value="None" id="radioOne" name="account"/>
+					 <label for="radioOne" style ="margin-top: 1px;" class="radio">RememberMe</label>
+				  </div>
+ 		          <div class="col-md-2">
+ 		             <input type="submit" value="Login" id="login-submit" class="btn btn-info"/>
+ 		          </div>
+ 			  </div>
+ 			  <div class="col-md-12" style="margin-left: 70px;">
+                    <ul class="social-network social-circle">
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>				
+			  </div>
         </form>
     </div>
-		 		
 	<div style="height:35%;"></div>
 		<br>
-		<div ng-include="'footer.html'"></div>
-		<script type="text/javascript" src="scripts/myApp.js"></script>
-		<script type="text/javascript" src="scripts/myAppController.js"></script>
+	<div ng-include="'footer.html'"></div>
 </body>
 </html>
