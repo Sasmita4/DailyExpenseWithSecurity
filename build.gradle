@@ -58,8 +58,14 @@ dependencies {
 		//for cloud
 		compile('org.springframework.cloud:spring-cloud-starter-config')
 		
+		//for spring social
+		compile('org.springframework.boot:spring-boot-starter-social-facebook')
+		compile('org.springframework.boot:spring-boot-starter-social-linkedin')
+		compile('org.springframework.boot:spring-boot-starter-social-twitter')
+		
 		//for db and test cases
 		compile group: 'info.cukes', name: 'gherkin-jvm-deps', version: '1.0.0'
 		compile group: 'org.mongeez', name: 'mongeez', version: '0.9.6'
 		testCompile('org.springframework.boot:spring-boot-starter-test')
+		
 }
