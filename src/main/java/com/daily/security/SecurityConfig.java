@@ -17,8 +17,11 @@ import org.springframework.security.oauth2.provider.request.DefaultOAuth2Request
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
+//import com.daily.social.SimpleSocialUsersDetailService;
+
 	@Configuration
 	@EnableWebSecurity
+//	@EnableOAuth2Sso
 	@EnableScheduling
 	public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
@@ -42,16 +45,20 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 		//.antMatchers("/", "/login").permitAll()
-		.antMatchers("/oauth/token").permitAll()
+		//.antMatchers("/oauth/token").permitAll()
 		.antMatchers("/swagger").permitAll()
+		// .antMatchers("/**").authenticated()
 		.and().formLogin().loginPage("/login").failureUrl("/accessDenied")
-		.usernameParameter("ssoId").passwordParameter("password").successForwardUrl("/home").and().logout().logoutSuccessUrl("/logout").and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+		.usernameParameter("ssoId").passwordParameter("password").successForwardUrl("/home").and()
+        .logout()
+        .logoutUrl("/logout")
+        .deleteCookies("JSESSIONID").and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+       
 	}
 
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
-
 		return super.authenticationManagerBean();
 	}
 
@@ -77,5 +84,8 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 		store.setTokenStore(tokenStore);
 		return store;
 	}
-
+//	@Bean
+//	public SocialUserDetailsService socialUsersDetailService() {
+//		return new SimpleSocialUsersDetailService(userDetailsService());
+//	}
 }

@@ -30,7 +30,27 @@ public class DailyExpenseTrackerController {
 		mv.addObject("name", name);
 		return mv;
 	}
-	
+	@RequestMapping(value="/facebook", method= RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView loadMainAfterFacebook(){
+		log.info("inside loadMainAfterFacebook() method");
+		ModelAndView mv = new ModelAndView("redirect:/main.html");
+		return mv;
+	}
+	@RequestMapping("/linkedIn")
+	@ResponseBody
+	public ModelAndView loadMainAfterLinkedIn(){
+		log.info("inside loadMainAfterLinkedIn() method");
+		ModelAndView mv = new ModelAndView("redirect:/main.html");
+		return mv;
+	}
+	@RequestMapping("/twitter")
+	@ResponseBody
+	public ModelAndView loadMainAfterTwitter(){
+		log.info("inside loadMainAfterTwitter() method");
+		ModelAndView mv = new ModelAndView("redirect:/main.html");
+		return mv;
+	}
 	@RequestMapping(value="/registerurl" ,method = RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView loadRegister(){

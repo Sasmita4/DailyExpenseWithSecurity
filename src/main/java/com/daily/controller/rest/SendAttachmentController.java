@@ -7,5 +7,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SendAttachmentController {
 	Logger log = LoggerFactory.getLogger(SendAttachmentController.class);
-
 }

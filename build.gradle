@@ -41,6 +41,9 @@ dependencies {
 		compile('org.springframework.boot:spring-boot-starter-actuator')
 		compile('org.springframework:spring-context-support')
 		
+		//For no need to start and stop spring boot application
+		compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '1.4.2.RELEASE'
+		
 		//for security
 		compile('org.springframework.security:spring-security-core')
 		compile('org.springframework.security:spring-security-web')
@@ -59,6 +62,7 @@ dependencies {
 		compile('org.springframework.cloud:spring-cloud-starter-config')
 		
 		//for spring social
+		compile("org.springframework.social:spring-social-security:1.1.4.RELEASE")
 		compile('org.springframework.boot:spring-boot-starter-social-facebook')
 		compile('org.springframework.boot:spring-boot-starter-social-linkedin')
 		compile('org.springframework.boot:spring-boot-starter-social-twitter')
