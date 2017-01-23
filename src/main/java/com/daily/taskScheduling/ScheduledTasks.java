@@ -2,8 +2,10 @@ package com.daily.taskScheduling;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,44 +42,44 @@ public class ScheduledTasks {
 	@Autowired
 	FoodService foodService;
 
-	Map<String, Object> parameterMap ;
+	Map<String, Object> parameterMap;
 
-	@Scheduled(fixedRate = 10000)
+	@Scheduled(cron ="0 0 1 * * *")
 	public void reportCurrentTime() throws JRException, FileNotFoundException {
-		log.info("> reportCurrentTime()");
-
-		Calendar cal= Calendar.getInstance();
-		SearchDto searchDto = new SearchDto();
 		
+		log.info("> reportCurrentTime()");
+		
+		SearchDto searchDto = new SearchDto();
 		List<String> typesList = new ArrayList<String>();
 		typesList.add(DailyExpenseConstants.FOOD_REPORT);
 		typesList.add(DailyExpenseConstants.MISCELLANEOUS_REPORT);
 		typesList.add(DailyExpenseConstants.TRANSPORTATION_REPORT);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'00:00:00.000'Z'");
 		
-		for(String type:typesList){
-			searchDto.setExpenseType(type);
-			searchDto.setFromDate("2016-10-31T18:30:00.000Z");
-			searchDto.setToDate("2017-01-19T18:30:00.000Z");
-		
-		
-		//int lastDate = cal.getActualMaximum(Calendar.DATE);
-		//int firstDate = cal.getActualMinimum(Calendar.DATE);
-		
-//		searchDto.setExpenseType("food");
-//		searchDto.setFromDate("2016-10-31T18:30:00.000Z");
-//		searchDto.setToDate("2017-01-19T18:30:00.000Z");
-		
+		// to get first date and last date of the month
+		Calendar calendar2 = Calendar.getInstance();
+		calendar2.setTime(new Date());
+		calendar2.set(Calendar.DAY_OF_MONTH, 1);
+		Date firstDayOfMonth = calendar2.getTime();
+		 
+        Calendar calendar1 = Calendar.getInstance();  
+        calendar1.setTime(new Date());  
+        calendar1.add(Calendar.MONTH, 1);  
+        calendar1.set(Calendar.DAY_OF_MONTH, 1);  
+        calendar1.add(Calendar.DATE, -1);  
+        Date lastDayOfMonth = calendar1.getTime();
+	        
+		//to generate reports based on report type
+		for(String reportType:typesList){
+			searchDto.setExpenseType(reportType);
+			searchDto.setFromDate(sdf.format(firstDayOfMonth));
+			searchDto.setToDate(sdf.format(lastDayOfMonth));
 		
 		parameterMap = new HashMap<String, Object>();
 
 		List<ReportResultDto> reportResult = reportService.reportCommonService(searchDto);
 		JRDataSource JRdataSource = new JRBeanCollectionDataSource(reportResult);
 		parameterMap.put("datasource", JRdataSource);
-		/*
-		 * modelAndView = new ModelAndView("rpt_report", parameterMap);
-		 * modelAndView.addObject("format", "pdf");
-		 * response.setContentType("application/pdf");
-		 */
 
 		JasperCompileManager
 				.compileReportToFile("/POC/DailyExpenseTracker/src/main/resources/jasperreports/rpt_report.jrxml");
@@ -90,7 +92,7 @@ public class ScheduledTasks {
 		JRExporter exporter = new JRPdfExporter();
 		exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
 		exporter.setParameter(JRExporterParameter.OUTPUT_STREAM,
-				new FileOutputStream("/POC/DailyExpenseTracker/src/main/resources/jasperreports/"+type+ System.currentTimeMillis() + ".pdf")); // your output
+				new FileOutputStream("/POC/DailyExpenseTracker/src/main/resources/jasperreports/"+reportType+ System.currentTimeMillis() + ".pdf")); // your output
 																	// goes here
 		exporter.exportReport();
 		}

@@ -54,6 +54,7 @@ public class CommonReportController {
     //@PreAuthorize("#user.name == principal.name")
     @Transactional(readOnly = true)
      public @ResponseBody ModelAndView expenseReport(@Valid @RequestBody SearchDto searchDto,ModelAndView modelAndView,HttpServletResponse response) throws URISyntaxException {
+    	log.info("> expenseReport()");
     	List<ReportResultDto> reportResult = reportService.reportCommonService(searchDto);
     	JRDataSource JRdataSource = new JRBeanCollectionDataSource(reportResult);
     	 parameterMap.put("datasource", JRdataSource);
